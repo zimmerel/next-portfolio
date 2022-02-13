@@ -8,7 +8,7 @@ interface Props {
 
 export default function Layout({ children }: Props) {
   return (
-    <Container>
+    <Container maxW="container.md">
       <Header />
       <Box as="main" m="2">
         {children}

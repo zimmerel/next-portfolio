@@ -1,24 +1,25 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
-import type { NextPage } from "next";
 import Head from "next/head";
-import Header from "../src/components/header.";
 
-const Home: NextPage = () => {
+const TITLE = "Zach's Portfolio";
+const DESCRIPTION =
+  "Zach Riel's Portfolio app. Created with Next.js and ChakraUI";
+
+export default function Home() {
   return (
     <>
       <Head>
-        <title>Zach&apos;s Portfolio</title>
-        <meta name="description" content="Zach Riel's Portfolio App" />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESCRIPTION} />
+        <meta name="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Box display="flex" justifyContent="space-between">
         <Box>
-          <Heading>Zach&apos;s Portfolio</Heading>
+          <Heading>{TITLE}</Heading>
           <Text>{"What's up?!"}</Text>
         </Box>
       </Box>
     </>
   );
-};
-
-export default Home;
+}

@@ -1,6 +1,6 @@
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import {
-  Box,
+  chakra,
   Flex,
   HTMLChakraProps,
   Icon,
@@ -8,12 +8,9 @@ import {
   Link,
   useColorMode,
   useColorModeValue,
-  VStack,
 } from "@chakra-ui/react";
 import siteConfig from "../../configs/site-config";
 import { GitHubIcon } from "./icons";
-
-interface Props {}
 
 function HeaderContent() {
   const { toggleColorMode } = useColorMode();
@@ -39,7 +36,7 @@ function HeaderContent() {
             display="block"
             transition="color 0.3s"
             _hover={{ color: "gray.500" }}
-            boxSize="6"
+            boxSize="5"
           />
         </Link>
         <IconButton
@@ -59,8 +56,7 @@ function HeaderContent() {
 
 export default function Header(props: HTMLChakraProps<"header">) {
   return (
-    <Box
-      as="header"
+    <chakra.header
       pos="sticky"
       top="0"
       zIndex="3"
@@ -69,9 +65,9 @@ export default function Header(props: HTMLChakraProps<"header">) {
       width="full"
       {...props}
     >
-      <Box height="4.5rem" mx="auto" maxW="8xl">
+      <chakra.div height="4.5rem" mx="auto" maxW="8xl">
         <HeaderContent />
-      </Box>
-    </Box>
+      </chakra.div>
+    </chakra.header>
   );
 }
