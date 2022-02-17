@@ -1,5 +1,6 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Link } from "@chakra-ui/react";
 import Head from "next/head";
+import NextLink from "next/link";
 import { getAllPosts } from "../../src/posts-api";
 import { PostData } from "../../types/post";
 
@@ -8,15 +9,17 @@ interface Props {
 }
 
 export default function Index({ allPosts }: Props) {
-  const [{ content, ...post }] = allPosts;
-
   return (
     <Box>
       <Head>
         <title>Blog</title>
       </Head>
       <Box>
-        <Box>{JSON.stringify(post, null, 2)}</Box>
+        {allPosts.map((post) => (
+          <NextLink key={post.slug} href={`/blog/${post.slug}`} passHref>
+            <Link>{post.title}</Link>
+          </NextLink>
+        ))}
       </Box>
     </Box>
   );
