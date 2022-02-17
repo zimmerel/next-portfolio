@@ -23,16 +23,16 @@ function HeaderContent() {
     <Flex
       w="100%"
       h="100%"
-      px="6"
+      px={2}
       align="center"
       justify="space-between"
-      gap={2}
+      gap={3}
     >
       <NextLink href="/" passHref>
-        <Button variant="ghost">Home</Button>
+        <Link>Home</Link>
       </NextLink>
       <NextLink href="/blog" passHref>
-        <Button variant="ghost">Blog</Button>
+        <Link>Blog</Link>
       </NextLink>
       <Flex
         justify="flex-end"

@@ -15,9 +15,16 @@ export default function Index({ allPosts }: Props) {
         <title>Blog</title>
       </Head>
       <Box>
-        {allPosts.map((post) => (
-          <NextLink key={post.slug} href={`/blog/${post.slug}`} passHref>
-            <Link>{post.title}</Link>
+        {allPosts.map(({ slug, title }) => (
+          <NextLink
+            key={slug}
+            href={{
+              pathname: "/blog/[slug]",
+              query: { slug },
+            }}
+            passHref
+          >
+            <Link>{title}</Link>
           </NextLink>
         ))}
       </Box>
