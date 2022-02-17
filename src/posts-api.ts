@@ -1,7 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
-import { PostData } from "../types/post";
+import type { PostData } from "../types/post";
 
 const postsDirectory = path.join(process.cwd(), "_posts");
 
@@ -13,8 +13,8 @@ export function getPostBySlug<K extends keyof PostData>(
   slug: string,
   fields: K[] = []
 ): Pick<PostData, K> {
-  const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = path.join(postsDirectory, `${realSlug}.md`);
+  const realSlug = slug.replace(/\.mdx$/, "");
+  const fullPath = path.join(postsDirectory, `${realSlug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf-8");
   const { data, content } = matter(fileContents);
 

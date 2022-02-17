@@ -1,5 +1,6 @@
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import {
+  Button,
   chakra,
   Flex,
   HTMLChakraProps,
@@ -9,6 +10,7 @@ import {
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
+import NextLink from "next/link";
 import siteConfig from "../../configs/site-config";
 import { GitHubIcon } from "./icons";
 
@@ -18,7 +20,20 @@ function HeaderContent() {
   const SwitchModeIcon = useColorModeValue(MoonIcon, SunIcon);
 
   return (
-    <Flex w="100%" h="100%" px="6" align="center" justify="space-between">
+    <Flex
+      w="100%"
+      h="100%"
+      px="6"
+      align="center"
+      justify="space-between"
+      gap={2}
+    >
+      <NextLink href="/" passHref>
+        <Button variant="ghost">Home</Button>
+      </NextLink>
+      <NextLink href="/blog" passHref>
+        <Button variant="ghost">Blog</Button>
+      </NextLink>
       <Flex
         justify="flex-end"
         w="100%"

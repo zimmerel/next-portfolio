@@ -11,7 +11,6 @@ export default function Home() {
       <Head>
         <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
-        <meta name="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Box display="flex" justifyContent="space-between">

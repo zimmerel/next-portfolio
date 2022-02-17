@@ -1,11 +1,13 @@
 import { Box, CircularProgress, HTMLChakraProps } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import BlogLayout from "../../../src/components/blog-layout";
-import { getAllPosts, getPostBySlug } from "../../../src/posts-api";
-import { PostData } from "../../../types/post";
 import ErrorPage from "next/error";
 import Head from "next/head";
-import markdownToHTML from "../../../src/markdownToHtml";
+import { compile } from "@mdx-js/mdx";
+import runtime from "react/jsx-runtime";
+import BlogLayout from "../../../src/components/blog-layout";
+import { getAllPosts, getPostBySlug } from "../../../src/posts-api";
+import type { PostData } from "../../../types/post";
+import useMDXComponent from "../../../src/mdx/useMDXComponent";
 
 interface PostProps extends HTMLChakraProps<"main"> {
   post: PostData;
@@ -13,6 +15,9 @@ interface PostProps extends HTMLChakraProps<"main"> {
 
 export default function Post({ post }: PostProps) {
   const router = useRouter();
+  const { title, content } = post;
+
+  const Content = useMDXComponent(content);
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
@@ -24,9 +29,9 @@ export default function Post({ post }: PostProps) {
       ) : (
         <Box as="article" mb={32}>
           <Head>
-            <title>{post.title}</title>
+            <title>{title}</title>
           </Head>
-          {JSON.stringify(post)}
+          <Content />
         </Box>
       )}
     </BlogLayout>
@@ -45,7 +50,11 @@ export async function getStaticProps({ params }: Params) {
     "author",
     "content",
   ]);
-  const content = await markdownToHTML(post.content || "");
+  const content = String(
+    await compile(post.content || "", {
+      outputFormat: "function-body",
+    })
+  );
 
   return {
     props: {
