@@ -7,8 +7,8 @@ type FileLike = { toString(): string };
 
 const DefaultContent = () => <></>;
 
-export default function useMDXComponent<T>(file: FileLike): MDXContent {
-  const [mdxModule, setMdxModule] = useState<MDXModule & T>();
+export default function useMDXComponent(file: FileLike): MDXContent {
+  const [mdxModule, setMdxModule] = useState<MDXModule>();
 
   useEffect(() => {
     (async () => {

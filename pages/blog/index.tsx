@@ -1,21 +1,28 @@
 import { Box, Link } from "@chakra-ui/react";
 import Head from "next/head";
 import NextLink from "next/link";
-import { getAllPosts } from "../../src/posts-api";
-import { PostData } from "../../types/post";
+import BlogPost from "../../src/blog/BlogPost";
+import { getAllPosts } from "../../src/blog/posts-api";
+import type { CompiledPost, PostData } from "../../src/blog/types";
+import { compileContent, compilePost } from "../../src/blog/compile";
+import { GetStaticProps, GetStaticPropsResult } from "next";
 
 interface Props {
-  allPosts: PostData[];
+  headPost: CompiledPost;
+  otherPosts: PostData[];
 }
 
-export default function Index({ allPosts }: Props) {
+export default function Index({ headPost, otherPosts }: Props) {
   return (
     <Box>
       <Head>
         <title>Blog</title>
       </Head>
       <Box>
-        {allPosts.map(({ slug, title }) => (
+        <BlogPost {...headPost} />
+      </Box>
+      <Box>
+        {otherPosts.map(({ slug, title }) => (
           <NextLink
             key={slug}
             href={{
@@ -32,12 +39,19 @@ export default function Index({ allPosts }: Props) {
   );
 }
 
-export async function getStaticProps() {
-  const allPosts = getAllPosts(["title", "date", "slug", "author", "content"]);
+export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
+  const [headPost, ...otherPosts] = await getAllPosts([
+    "title",
+    "date",
+    "slug",
+    "author",
+    "content",
+  ]);
 
   return {
     props: {
-      allPosts,
+      headPost: await compilePost(headPost),
+      otherPosts,
     },
   };
 }

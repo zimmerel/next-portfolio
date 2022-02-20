@@ -1,7 +1,7 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
 import Head from "next/head";
 
-const TITLE = "Zach's Portfolio";
+const TITLE = "Hello, I'm Zach";
 const DESCRIPTION =
   "Zach Riel's Portfolio app. Created with Next.js and ChakraUI";
 
@@ -16,7 +16,11 @@ export default function Home() {
       <Box display="flex" justifyContent="space-between">
         <Box>
           <Heading>{TITLE}</Heading>
-          <Text>{"What's up?!"}</Text>
+          <Text>
+            I am a software developer with skills ranging across various stacks.
+            Most of all, I love to solve problems. This site is to share my work
+            and thoughts.
+          </Text>
         </Box>
       </Box>
     </>

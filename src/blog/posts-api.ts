@@ -1,21 +1,21 @@
-import fs from "fs";
+import fs from "fs/promises";
 import matter from "gray-matter";
 import path from "path";
-import type { PostData } from "../types/post";
+import type { PostData } from "./types";
 
 const postsDirectory = path.join(process.cwd(), "_posts");
 
 export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory);
+  return fs.readdir(postsDirectory);
 }
 
-export function getPostBySlug<K extends keyof PostData>(
+export async function getPostBySlug<K extends keyof PostData>(
   slug: string,
   fields: K[] = []
-): Pick<PostData, K> {
+): Promise<Pick<PostData, K>> {
   const realSlug = slug.replace(/\.mdx$/, "");
   const fullPath = path.join(postsDirectory, `${realSlug}.mdx`);
-  const fileContents = fs.readFileSync(fullPath, "utf-8");
+  const fileContents = await fs.readFile(fullPath, "utf-8");
   const { data, content } = matter(fileContents);
 
   const items: any = {};
@@ -37,9 +37,10 @@ export function getPostBySlug<K extends keyof PostData>(
   return items;
 }
 
-export function getAllPosts<K extends keyof PostData>(fields: K[] = []) {
-  const slugs = getPostSlugs();
-  return slugs
-    .map((slug) => getPostBySlug(slug, [...fields, "date"]))
-    .sort((postA, postB) => (postA.date > postB.date ? -1 : 1));
+export async function getAllPosts<K extends keyof PostData>(fields: K[] = []) {
+  const slugs = await getPostSlugs();
+  const posts = await Promise.all(
+    slugs.map((slug) => getPostBySlug(slug, [...fields, "date"]))
+  );
+  return posts.sort((postA, postB) => (postA.date > postB.date ? -1 : 1));
 }

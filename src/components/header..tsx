@@ -29,10 +29,10 @@ function HeaderContent() {
       gap={3}
     >
       <NextLink href="/" passHref>
-        <Link>Home</Link>
+        <Button variant="ghost">About</Button>
       </NextLink>
       <NextLink href="/blog" passHref>
-        <Link>Blog</Link>
+        <Button variant="ghost">Blog</Button>
       </NextLink>
       <Flex
         justify="flex-end"

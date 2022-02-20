@@ -1,25 +1,24 @@
-import { Box, CircularProgress, HTMLChakraProps } from "@chakra-ui/react";
+import {
+  Box,
+  chakra,
+  CircularProgress,
+  Heading,
+  HTMLChakraProps,
+} from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Head from "next/head";
-import { compile } from "@mdx-js/mdx";
-import runtime from "react/jsx-runtime";
-import BlogLayout from "../../src/components/blog-layout";
-import { getAllPosts, getPostBySlug } from "../../src/posts-api";
-import type { PostData } from "../../types/post";
-import useMDXComponent from "../../src/mdx/useMDXComponent";
+import BlogLayout from "../../src/blog/BlogLayout";
+import { getAllPosts, getPostBySlug } from "../../src/blog/posts-api";
+import type { CompiledPost } from "../../src/blog/types";
+import BlogPost from "../../src/blog/BlogPost";
+import { compilePost } from "../../src/blog/compile";
+import { GetStaticPropsResult } from "next";
 
-interface PostProps extends HTMLChakraProps<"main"> {
-  post: PostData;
-}
-
-export default function Post({ post }: PostProps) {
+export default function Post({ meta, content }: CompiledPost) {
   const router = useRouter();
-  const { title, content } = post;
 
-  const Content = useMDXComponent(content);
-
-  if (!router.isFallback && !post?.slug) {
+  if (!router.isFallback && !meta.slug) {
     return <ErrorPage statusCode={404} />;
   }
   return (
@@ -27,12 +26,12 @@ export default function Post({ post }: PostProps) {
       {router.isFallback ? (
         <CircularProgress />
       ) : (
-        <Box as="article" mb={32}>
+        <>
           <Head>
-            <title>{title}</title>
+            <title>{meta.title}</title>
           </Head>
-          <Content />
-        </Box>
+          <BlogPost meta={meta} content={content} />
+        </>
       )}
     </BlogLayout>
   );
@@ -42,32 +41,24 @@ interface Params {
   params: { slug: string };
 }
 
-export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, [
+export async function getStaticProps({
+  params,
+}: Params): Promise<GetStaticPropsResult<CompiledPost>> {
+  const post = await getPostBySlug(params.slug, [
     "title",
     "date",
     "slug",
     "author",
     "content",
   ]);
-  const content = String(
-    await compile(post.content || "", {
-      outputFormat: "function-body",
-    })
-  );
 
   return {
-    props: {
-      post: {
-        ...post,
-        content,
-      },
-    },
+    props: await compilePost(post),
   };
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+  const posts = await getAllPosts(["slug"]);
   return {
     paths: posts.map((post) => ({
       params: {
