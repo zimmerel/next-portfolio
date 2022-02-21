@@ -3,20 +3,36 @@ import Head from "next/head";
 import NextLink from "next/link";
 import BlogPost from "../../src/blog/BlogPost";
 import { getAllPosts } from "../../src/blog/posts-api";
-import type { CompiledPost, PostData } from "../../src/blog/types";
-import { compileContent, compilePost } from "../../src/blog/compile";
-import { GetStaticProps, GetStaticPropsResult } from "next";
+import type { PostData } from "../../src/blog/types";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 
-interface Props {
-  headPost: CompiledPost;
-  otherPosts: PostData[];
-}
+export const getStaticProps: GetStaticProps<{
+  posts: PostData[];
+}> = async () => {
+  const posts = await getAllPosts([
+    "title",
+    "date",
+    "slug",
+    "author",
+    "content",
+  ]);
 
-export default function Index({ headPost, otherPosts }: Props) {
+  return {
+    props: {
+      posts,
+    },
+  };
+};
+
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
+
+export default function Index({ posts }: Props) {
+  const [headPost, ...otherPosts] = posts;
+
   return (
     <Box>
       <Head>
-        <title>Blog</title>
+        <title>Blog - Index</title>
       </Head>
       <Box>
         <BlogPost {...headPost} />
@@ -37,21 +53,4 @@ export default function Index({ headPost, otherPosts }: Props) {
       </Box>
     </Box>
   );
-}
-
-export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
-  const [headPost, ...otherPosts] = await getAllPosts([
-    "title",
-    "date",
-    "slug",
-    "author",
-    "content",
-  ]);
-
-  return {
-    props: {
-      headPost: await compilePost(headPost),
-      otherPosts,
-    },
-  };
 }

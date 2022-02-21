@@ -5,6 +5,6 @@ interface Props {
   children: ReactNode;
 }
 
-export default function BlogLayout({ children }: Props) {
+export default function PostLayout({ children }: Props) {
   return <Box>{children}</Box>;
 }

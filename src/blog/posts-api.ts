@@ -1,7 +1,16 @@
 import fs from "fs/promises";
 import matter from "gray-matter";
 import path from "path";
+import { compile } from "@mdx-js/mdx";
 import type { PostData } from "./types";
+
+async function compileContent(content: string = "") {
+  return String(
+    await compile(content, {
+      outputFormat: "function-body",
+    })
+  );
+}
 
 const postsDirectory = path.join(process.cwd(), "_posts");
 
@@ -18,21 +27,21 @@ export async function getPostBySlug<K extends keyof PostData>(
   const fileContents = await fs.readFile(fullPath, "utf-8");
   const { data, content } = matter(fileContents);
 
-  const items: any = {};
+  const items = {} as Pick<PostData, K>;
 
-  fields.forEach((field) => {
+  for (const field of fields) {
     if (field === "slug") {
       items[field] = realSlug;
     }
 
     if (field === "content") {
-      items[field] = content;
+      items[field] = await compileContent(content);
     }
 
     if (field in data) {
       items[field] = data[field];
     }
-  });
+  }
 
   return items;
 }
