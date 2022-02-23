@@ -1,5 +1,5 @@
 import fs from "fs/promises";
-import matter from "gray-matter";
+import matter, { GrayMatterFile } from "gray-matter";
 import path from "path";
 import type { PostData } from "./types";
 import compileContent from "./compileContent";
@@ -7,17 +7,23 @@ import compileContent from "./compileContent";
 const postsDirectory = path.join(process.cwd(), "_posts");
 
 interface PostsApiDeps {
-  fs: Pick<typeof fs, "readdir" | "readFile">;
+  fs: {
+    readdir(input: string): Promise<string[]>;
+    readFile(path: string, encoding: BufferEncoding): Promise<string>;
+  };
   path: Pick<typeof path, "join">;
-  matter: typeof matter;
-  compile: typeof compileContent;
+  matter(input: string): {
+    content: string;
+    data: Record<string, any>;
+  };
+  compile(content: string): Promise<string>;
 }
 
 export class PostsApi {
-  constructor(private directory: string, private config: PostsApiDeps) {}
+  constructor(private directory: string, private deps: PostsApiDeps) {}
 
   async getSlugs(): Promise<string[]> {
-    const { fs } = this.config;
+    const { fs } = this.deps;
     try {
       return fs.readdir(this.directory);
     } catch {
@@ -27,12 +33,14 @@ export class PostsApi {
 
   async getBySlug<K extends keyof PostData>(
     slug: string,
-    fields: K[] = []
+    fields: K[]
   ): Promise<Pick<PostData, K>> {
-    const { path, fs, matter, compile } = this.config;
+    const { path, fs, matter, compile } = this.deps;
+
     const realSlug = slug.replace(/\.mdx$/, "");
     const fullPath = path.join(this.directory, `${realSlug}.mdx`);
     const fileContents = await fs.readFile(fullPath, "utf-8");
+
     const { data, content } = matter(fileContents);
 
     const items = {} as Pick<PostData, K>;
@@ -56,7 +64,7 @@ export class PostsApi {
   }
 
   async getAll<K extends keyof PostData>(
-    fields: K[] = []
+    fields: K[]
   ): Promise<Pick<PostData, K>[]> {
     const slugs = await this.getSlugs();
     return Promise.all(slugs.map((slug) => this.getBySlug(slug, fields)));
