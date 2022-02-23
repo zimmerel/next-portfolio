@@ -5,7 +5,6 @@ import BlogPost from "../../src/blog/BlogPost";
 import postsApi from "../../src/blog/posts-api";
 import type { PostData } from "../../src/blog/types";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
-import compileContent from "../../src/blog/compileContent";
 
 export const getStaticProps: GetStaticProps<{
   posts: [PostData, ...Pick<PostData, "title" | "slug">[]];
@@ -21,8 +20,6 @@ export const getStaticProps: GetStaticProps<{
     "author",
     "content",
   ]);
-
-  headPost.content = await compileContent(headPost.content);
 
   return {
     props: {
