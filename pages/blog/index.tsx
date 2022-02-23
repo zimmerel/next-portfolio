@@ -2,14 +2,19 @@ import { Box, Link } from "@chakra-ui/react";
 import Head from "next/head";
 import NextLink from "next/link";
 import BlogPost from "../../src/blog/BlogPost";
-import { getAllPosts } from "../../src/blog/posts-api";
+import postsApi from "../../src/blog/posts-api";
 import type { PostData } from "../../src/blog/types";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+import compileContent from "../../src/blog/compileContent";
 
 export const getStaticProps: GetStaticProps<{
-  posts: PostData[];
+  posts: [PostData, ...Pick<PostData, "title" | "slug">[]];
 }> = async () => {
-  const posts = await getAllPosts([
+  const [head, ...posts] = await postsApi.getAllSorted("date", [
+    "title",
+    "slug",
+  ]);
+  const headPost = await postsApi.getBySlug(head.slug, [
     "title",
     "date",
     "slug",
@@ -17,9 +22,11 @@ export const getStaticProps: GetStaticProps<{
     "content",
   ]);
 
+  headPost.content = await compileContent(headPost.content);
+
   return {
     props: {
-      posts,
+      posts: [headPost, ...posts],
     },
   };
 };

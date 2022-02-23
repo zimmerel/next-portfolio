@@ -1,6 +1,6 @@
 import { Container, Box } from "@chakra-ui/react";
 import { ReactNode } from "react";
-import Header from "./header.";
+import Header from "./Header";
 
 interface Props {
   children: ReactNode;

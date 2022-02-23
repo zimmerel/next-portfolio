@@ -4,7 +4,7 @@ import ErrorPage from "next/error";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import PostLayout from "../../src/blog/PostLayout";
-import { getAllPosts, getPostBySlug } from "../../src/blog/posts-api";
+import postsApi from "../../src/blog/posts-api";
 import BlogPost from "../../src/blog/BlogPost";
 import type { PostData } from "../../src/blog/types";
 
@@ -17,7 +17,7 @@ export const getStaticProps: GetStaticProps<
       notFound: true,
     };
   }
-  const post = await getPostBySlug(params.slug, [
+  const post = await postsApi.getBySlug(params.slug, [
     "title",
     "date",
     "slug",
@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
-  const posts = await getAllPosts(["slug"]);
+  const posts = await postsApi.getAllSorted("date", ["slug"]);
   return {
     paths: posts.map(({ slug }) => ({
       params: { slug },

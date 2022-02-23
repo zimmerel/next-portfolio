@@ -1,55 +1,77 @@
 import fs from "fs/promises";
 import matter from "gray-matter";
 import path from "path";
-import { compile } from "@mdx-js/mdx";
 import type { PostData } from "./types";
-
-async function compileContent(content: string = "") {
-  return String(
-    await compile(content, {
-      outputFormat: "function-body",
-    })
-  );
-}
+import compileContent from "./compileContent";
 
 const postsDirectory = path.join(process.cwd(), "_posts");
 
-export function getPostSlugs() {
-  return fs.readdir(postsDirectory);
+interface PostsApiDeps {
+  fs: Pick<typeof fs, "readdir" | "readFile">;
+  path: Pick<typeof path, "join">;
+  matter: typeof matter;
+  compile: typeof compileContent;
 }
 
-export async function getPostBySlug<K extends keyof PostData>(
-  slug: string,
-  fields: K[] = []
-): Promise<Pick<PostData, K>> {
-  const realSlug = slug.replace(/\.mdx$/, "");
-  const fullPath = path.join(postsDirectory, `${realSlug}.mdx`);
-  const fileContents = await fs.readFile(fullPath, "utf-8");
-  const { data, content } = matter(fileContents);
+export class PostsApi {
+  constructor(private directory: string, private config: PostsApiDeps) {}
 
-  const items = {} as Pick<PostData, K>;
-
-  for (const field of fields) {
-    if (field === "slug") {
-      items[field] = realSlug;
-    }
-
-    if (field === "content") {
-      items[field] = await compileContent(content);
-    }
-
-    if (field in data) {
-      items[field] = data[field];
+  async getSlugs(): Promise<string[]> {
+    const { fs } = this.config;
+    try {
+      return fs.readdir(this.directory);
+    } catch {
+      return [];
     }
   }
 
-  return items;
+  async getBySlug<K extends keyof PostData>(
+    slug: string,
+    fields: K[] = []
+  ): Promise<Pick<PostData, K>> {
+    const { path, fs, matter, compile } = this.config;
+    const realSlug = slug.replace(/\.mdx$/, "");
+    const fullPath = path.join(this.directory, `${realSlug}.mdx`);
+    const fileContents = await fs.readFile(fullPath, "utf-8");
+    const { data, content } = matter(fileContents);
+
+    const items = {} as Pick<PostData, K>;
+
+    // Ensure only the minimal needed data is exposed
+    for (const field of fields) {
+      if (field === "slug") {
+        items[field] = realSlug;
+      }
+
+      if (field === "content") {
+        items[field] = await compile(content);
+      }
+
+      if (field in data) {
+        items[field] = data[field];
+      }
+    }
+
+    return items;
+  }
+
+  async getAll<K extends keyof PostData>(
+    fields: K[] = []
+  ): Promise<Pick<PostData, K>[]> {
+    const slugs = await this.getSlugs();
+    return Promise.all(slugs.map((slug) => this.getBySlug(slug, fields)));
+  }
+
+  async getAllSorted<K extends keyof PostData>(by: K, fields: K[] = []) {
+    const posts = await this.getAll([...fields, by]);
+    return posts.sort((postA, postB) => (postA[by] > postB[by] ? -1 : 1));
+  }
 }
 
-export async function getAllPosts<K extends keyof PostData>(fields: K[] = []) {
-  const slugs = await getPostSlugs();
-  const posts = await Promise.all(
-    slugs.map((slug) => getPostBySlug(slug, [...fields, "date"]))
-  );
-  return posts.sort((postA, postB) => (postA.date > postB.date ? -1 : 1));
-}
+export const postsApi = new PostsApi(postsDirectory, {
+  fs,
+  path,
+  matter,
+  compile: compileContent,
+});
+export default postsApi;
