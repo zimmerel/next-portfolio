@@ -1,46 +1,14 @@
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-import {
-  Button,
-  chakra,
-  Flex,
-  HTMLChakraProps,
-  Icon,
-  IconButton,
-  Link,
-  useColorMode,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import NextLink from "next/link";
+import { chakra, Flex, HTMLChakraProps, Icon, Link } from "@chakra-ui/react";
 import siteConfig from "../../configs/site-config";
 import { GitHubIcon } from "./icons";
+import ColorModeSwitch from "./ColorModeSwitch";
+import RouteBreadcrumb from "./RouteBreadcrumb";
 
 function HeaderContent() {
-  const { toggleColorMode } = useColorMode();
-  const switchModeText = useColorModeValue("dark", "light");
-  const SwitchModeIcon = useColorModeValue(MoonIcon, SunIcon);
-
   return (
-    <Flex
-      w="100%"
-      h="100%"
-      px={2}
-      align="center"
-      justify="space-between"
-      gap={3}
-    >
-      <NextLink href="/" passHref>
-        <Button variant="ghost">About</Button>
-      </NextLink>
-      <NextLink href="/blog" passHref>
-        <Button variant="ghost">Blog</Button>
-      </NextLink>
-      <Flex
-        justify="flex-end"
-        w="100%"
-        align="center"
-        color="gray.400"
-        maxW="1100px"
-      >
+    <Flex w="100%" h="100%" align="center" justify="space-between" gap={3}>
+      <RouteBreadcrumb />
+      <Flex justify="flex-end" align="center" color="gray.400" maxW="1100px">
         <Link
           isExternal
           aria-label="go to Zach's github profile"
@@ -54,16 +22,7 @@ function HeaderContent() {
             boxSize="5"
           />
         </Link>
-        <IconButton
-          size="md"
-          fontSize="lg"
-          aria-label={`Switch to ${switchModeText} mode`}
-          variant="ghost"
-          color="current"
-          ml="3"
-          onClick={toggleColorMode}
-          icon={<SwitchModeIcon />}
-        />
+        <ColorModeSwitch />
       </Flex>
     </Flex>
   );

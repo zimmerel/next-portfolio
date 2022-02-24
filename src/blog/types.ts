@@ -5,4 +5,5 @@ export interface PostData {
   slug: string;
   content: string;
   excerpt?: string;
+  coverImageUrl?: string;
 }

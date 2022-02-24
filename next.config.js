@@ -12,6 +12,9 @@ const withMDX = require("@next/mdx")({
 const nextConfig = withMDX({
   reactStrictMode: true,
   pageExtensions: ["md", "mdx", "ts", "tsx"],
+  images: {
+    domains: ["wallpapercave.com"],
+  },
 });
 
 module.exports = nextConfig;

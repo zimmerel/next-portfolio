@@ -1,25 +1,11 @@
 import { Box, Heading } from "@chakra-ui/react";
-import { format, parseISO } from "date-fns";
 import { PostData } from "./types";
-
-function usePostDate(isoDate: string) {
-  const date = parseISO(isoDate);
-  const today = new Date();
-
-  if (
-    date.getFullYear() === today.getFullYear() &&
-    date.getDate() === today.getDate()
-  ) {
-    return "today";
-  }
-
-  return format(date, "MMM do");
-}
+import useDateFormat from "./useDateFormat";
 
 type Props = Pick<PostData, "author" | "title" | "date">;
 
 export default function PostHeader({ date, author, title }: Props) {
-  const formattedDate = usePostDate(date);
+  const formattedDate = useDateFormat(date);
 
   return (
     <Box mb={6}>
