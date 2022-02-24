@@ -1,5 +1,5 @@
 import fs from "fs/promises";
-import matter, { GrayMatterFile } from "gray-matter";
+import matter, { GrayMatterOption } from "gray-matter";
 import path from "path";
 import type { PostData } from "./types";
 import compileContent from "./compileContent";
@@ -11,13 +11,21 @@ interface PostsApiDeps {
     readdir(input: string): Promise<string[]>;
     readFile(path: string, encoding: BufferEncoding): Promise<string>;
   };
-  path: Pick<typeof path, "join">;
-  matter(input: string): {
+  path: {
+    join(...paths: string[]): string;
+  };
+  matter<O extends GrayMatterOption<string, O>>(
+    input: string,
+    options?: O
+  ): {
     content: string;
     data: Record<string, any>;
+    excerpt?: string;
   };
   compile(content: string): Promise<string>;
 }
+
+const hasExcerpt = (fields: string[]): boolean => fields.includes("excerpt");
 
 export class PostsApi {
   constructor(private directory: string, private deps: PostsApiDeps) {}
@@ -49,13 +57,9 @@ export class PostsApi {
     for (const field of fields) {
       if (field === "slug") {
         items[field] = realSlug;
-      }
-
-      if (field === "content") {
+      } else if (field === "content") {
         items[field] = await compile(content);
-      }
-
-      if (field in data) {
+      } else if (field in data) {
         items[field] = data[field];
       }
     }

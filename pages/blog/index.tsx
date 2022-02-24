@@ -1,13 +1,20 @@
-import { Box, Link } from "@chakra-ui/react";
+import { Box, Link, Text } from "@chakra-ui/react";
 import Head from "next/head";
 import NextLink from "next/link";
 import BlogPost from "../../src/blog/BlogPost";
 import postsApi from "../../src/blog/posts-api";
 import type { PostData } from "../../src/blog/types";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+import PostHeader from "../../src/blog/PostHeader";
+
+type BaseFields = "title" | "slug";
+type HeadFields = BaseFields | "date" | "author" | "author" | "excerpt";
+
+type OtherPosts = Pick<PostData, BaseFields>;
+type HeadPost = Pick<PostData, HeadFields>;
 
 export const getStaticProps: GetStaticProps<{
-  posts: [PostData, ...Pick<PostData, "title" | "slug">[]];
+  posts: [HeadPost, ...OtherPosts[]];
 }> = async () => {
   const [head, ...posts] = await postsApi.getAllSorted("date", [
     "title",
@@ -15,10 +22,10 @@ export const getStaticProps: GetStaticProps<{
   ]);
   const headPost = await postsApi.getBySlug(head.slug, [
     "title",
-    "date",
     "slug",
+    "date",
     "author",
-    "content",
+    "excerpt",
   ]);
 
   return {
@@ -31,7 +38,7 @@ export const getStaticProps: GetStaticProps<{
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export default function Index({ posts }: Props) {
-  const [headPost, ...otherPosts] = posts;
+  const [post, ...otherPosts] = posts;
 
   return (
     <Box>
@@ -39,7 +46,8 @@ export default function Index({ posts }: Props) {
         <title>Blog - Index</title>
       </Head>
       <Box>
-        <BlogPost {...headPost} />
+        <PostHeader author={post.author} date={post.date} title={post.title} />
+        <Text>{post.excerpt}</Text>
       </Box>
       <Box>
         {otherPosts.map(({ slug, title }) => (
