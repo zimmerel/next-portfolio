@@ -1,4 +1,4 @@
-import { Container, Box } from "@chakra-ui/react";
+import { Container, Box, useColorModeValue } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import Header from "./Header";
 import RouteBreadcrumb from "./RouteBreadcrumb";

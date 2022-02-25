@@ -29,7 +29,7 @@ export default function PostPreview({ post, ...boxProps }: Props) {
   const formattedDate = useDateFormat(date);
 
   return (
-    <LinkBox width="100%" overflow="hidden" py={1} {...boxProps}>
+    <LinkBox width="100%" overflow="hidden" my={2} {...boxProps}>
       <Box>
         <Text>
           {author}{" "}

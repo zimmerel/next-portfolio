@@ -2,7 +2,7 @@ import fs from "fs/promises";
 import matter, { GrayMatterOption } from "gray-matter";
 import path from "path";
 import type { PostData } from "./types";
-import compileContent from "./compileContent";
+import compileMDX from "../mdx/compileMDX";
 
 const postsDirectory = path.join(process.cwd(), "_posts");
 
@@ -24,8 +24,6 @@ interface PostsApiDeps {
   };
   compile(content: string): Promise<string>;
 }
-
-const hasExcerpt = (fields: string[]): boolean => fields.includes("excerpt");
 
 export class PostsApi {
   constructor(private directory: string, private deps: PostsApiDeps) {}
@@ -84,6 +82,6 @@ export const postsApi = new PostsApi(postsDirectory, {
   fs,
   path,
   matter,
-  compile: compileContent,
+  compile: compileMDX,
 });
 export default postsApi;

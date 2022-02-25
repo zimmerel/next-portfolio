@@ -1,4 +1,11 @@
-import { chakra, Flex, HTMLChakraProps, Icon, Link } from "@chakra-ui/react";
+import {
+  chakra,
+  Flex,
+  HTMLChakraProps,
+  Icon,
+  Link,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import siteConfig from "../../configs/site-config";
 import { GitHubIcon } from "./icons";
 import ColorModeSwitch from "./ColorModeSwitch";
@@ -29,6 +36,7 @@ function HeaderContent() {
 }
 
 export default function Header(props: HTMLChakraProps<"header">) {
+  const headerBg = useColorModeValue("white", "gray.800");
   return (
     <chakra.header
       pos="sticky"
@@ -37,6 +45,8 @@ export default function Header(props: HTMLChakraProps<"header">) {
       left="0"
       right="0"
       width="full"
+      bgColor={headerBg}
+      transition="box-shadow 0.2s, background-color 0.2s"
       {...props}
     >
       <chakra.div height="4.5rem" mx="auto" maxW="8xl">
