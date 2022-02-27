@@ -12,12 +12,9 @@ export default function useMDXComponent(file: FileLike): MDXContent {
 
   useEffect(() => {
     run(file, _jsx_runtime).then((module) => {
-      console.log(module);
       setMdxModule(module);
     });
   }, [file]);
-
-  const Component = mdxModule?.default ?? DefaultContent;
 
   return mdxModule?.default ?? DefaultContent;
 }

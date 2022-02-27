@@ -14,6 +14,7 @@ import {
 import { PostData } from "./types";
 import useDateFormat from "./useDateFormat";
 import Link from "next/link";
+import { useState } from "react";
 
 type PreviewPostData = Pick<
   PostData,
@@ -29,7 +30,7 @@ export default function PostPreview({ post, ...boxProps }: Props) {
   const formattedDate = useDateFormat(date);
 
   return (
-    <LinkBox width="100%" overflow="hidden" my={2} {...boxProps}>
+    <LinkBox width="100%" overflow="hidden" my={2} role="group" {...boxProps}>
       <Box>
         <Text>
           {author}{" "}
@@ -66,6 +67,16 @@ export default function PostPreview({ post, ...boxProps }: Props) {
           </Box>
         )}
       </Flex>
+      <Box>
+        <Text
+          opacity={0}
+          _groupHover={{ opacity: 1 }}
+          transition="opacity 0.1s"
+          color="gray.500"
+        >
+          [Read More]
+        </Text>
+      </Box>
     </LinkBox>
   );
 }

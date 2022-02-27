@@ -47,6 +47,9 @@ export interface RouteBreadcrumbProps {
   transform?: (text: string) => string;
 }
 
+/**
+ * Chakra Breadcrumbs dynamically rendered from router
+ */
 export default function RouteBreadcrumb({
   transform = transformText,
 }: RouteBreadcrumbProps) {

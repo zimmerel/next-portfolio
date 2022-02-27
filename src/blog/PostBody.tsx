@@ -1,5 +1,4 @@
-import { Box, Text, Heading, Code, useColorModeValue } from "@chakra-ui/react";
-import { MDXComponents } from "mdx/types";
+import { Box, useColorModeValue } from "@chakra-ui/react";
 import mdxComponents from "../mdx/mdxComponents";
 import useMDXComponent from "../mdx/useMDXComponent";
 
@@ -12,6 +11,7 @@ export default function PostBody({ content }: { content: string }) {
     <Box
       bgColor={bgColor}
       transition="background-color 0.2s"
+      boxShadow="md"
       p={5}
       borderRadius="lg"
     >
