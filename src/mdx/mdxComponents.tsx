@@ -1,32 +1,13 @@
 import {
   Box,
   Text,
-  Heading,
   Code,
-  Link,
   TextProps,
   chakra,
   forwardRef,
-  HTMLChakraComponents,
-  Divider,
-  As,
-  CodeProps,
   BoxProps,
-  UnorderedList,
-  OrderedList,
-  ListItem,
-  Table,
-  Thead,
-  Tbody,
-  Td,
-  Th,
-  Tr,
-  Input,
-  InputProps,
   Checkbox,
   List,
-  ChakraProps,
-  OmitCommonProps,
   ChakraComponent,
   useColorModeValue,
   Alert,
@@ -34,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import Image, { ImageProps } from "next/image";
 import type { MDXComponents } from "mdx/types";
-import { Children, DetailedHTMLProps, HTMLAttributes } from "react";
+import { Children, cloneElement, isValidElement } from "react";
 
 const InlineCode: ChakraComponent<"code", {}> = (props) => (
   <chakra.code
@@ -49,6 +30,51 @@ const Pre: ChakraComponent<"pre", {}> = (props) => (
 );
 
 const CodeBlock = () => <></>;
+
+const Table: ChakraComponent<"table", {}> = (props) => (
+  <chakra.div overflowX="auto">
+    <chakra.table textAlign="left" mt="32px" width="full" {...props} />
+  </chakra.div>
+);
+
+const Th: ChakraComponent<"th", {}> = (props) => (
+  <chakra.th
+    bg={useColorModeValue("gray.50", "whiteAlpha.100")}
+    fontWeight="semibold"
+    p={2}
+    fontSize="sm"
+    {...props}
+  />
+);
+
+const Td: ChakraComponent<"td", {}> = (props) => (
+  <chakra.td
+    p={2}
+    borderTopWidth="1px"
+    borderColor="inherit"
+    fontSize="sm"
+    whiteSpace="normal"
+    {...props}
+  />
+);
+
+const Li: ChakraComponent<"li", {}> = (props) => (
+  <chakra.li pb="4px" {...props} />
+);
+
+const ListItem: ChakraComponent<"li", {}> = ({ children, ...props }) => {
+  let taskChildren = children;
+  if (props.className === "task-list-item") {
+    // if item is task item, pass children to checkbox
+    const [checkbox, ...rest] = Children.toArray(children);
+
+    if (isValidElement(checkbox)) {
+      taskChildren = cloneElement(checkbox, checkbox.props, rest);
+    }
+  }
+
+  return <Li {...props}>{taskChildren}</Li>;
+};
 
 const mdxComponents: MDXComponents = {
   p: (props) => <chakra.p apply="mdx.p" {...props} />,
@@ -90,24 +116,26 @@ const mdxComponents: MDXComponents = {
   strong: (props: BoxProps) => (
     <Box as="strong" fontWeight="semibold" {...props} />
   ),
-  ul: ({ className, ...props }) => {
-    if (className === "contains-task-list") {
+  ul: (props) => {
+    if (props.className === "contains-task-list") {
       return <List {...props} />;
     }
     return <chakra.ul apply="mdx.ul" {...props} />;
   },
   ol: (props) => <chakra.ol apply="mdx.ul" {...props} />,
-  li: (props) => <chakra.li pb="4px" {...props} />,
+  li: ListItem,
   table: Table,
-  thead: Thead,
-  tbody: Tbody,
   td: Td,
   th: Th,
-  tr: Tr,
+  tr: chakra.tr,
   section: (props: BoxProps) => <Box as="section" {...props} />,
   sup: (props: TextProps) => <Text as="sup" {...props} />,
   sub: (props: TextProps) => <Text as="sub" {...props} />,
-  input: ({ checked }) => <Checkbox isChecked={checked} isReadOnly />,
+  input: ({ checked, children }) => (
+    <Checkbox isChecked={checked} isReadOnly>
+      {children}
+    </Checkbox>
+  ),
 };
 
 export default mdxComponents;
