@@ -4,6 +4,7 @@ import {
   BreadcrumbLink,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import { CSSProperties } from "@emotion/serialize";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -13,12 +14,9 @@ export type BreadcrumbData = {
   href: string;
 };
 
-const transformText = (text: string) => {
-  return text.replace(/-/g, " ").replace(/_/g, " ");
-};
+const transformText = (text: string) => text.replace(/[-_]/g, " ");
 
-export function useBreadcrumbs() {
-  const { asPath } = useRouter();
+export function useBreadcrumbs(asPath: string) {
   const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbData[]>([]);
 
   useEffect(() => {
@@ -37,14 +35,19 @@ export function useBreadcrumbs() {
     setBreadcrumbs(pathArray);
   }, [asPath]);
 
-  return {
-    breadcrumbs,
-    asPath,
-  };
+  return breadcrumbs;
 }
 
 export interface RouteBreadcrumbProps {
+  /**
+   * Transform function applied to route pathname before
+   * it is displayed in breadcrumb.
+   */
   transform?: (text: string) => string;
+  /**
+   * `text-transform` css property applied to breadcrumbs
+   */
+  textTransform?: CSSProperties["textTransform"];
 }
 
 /**
@@ -52,8 +55,10 @@ export interface RouteBreadcrumbProps {
  */
 export default function RouteBreadcrumb({
   transform = transformText,
+  textTransform = "capitalize",
 }: RouteBreadcrumbProps) {
-  const { breadcrumbs, asPath } = useBreadcrumbs();
+  const { asPath } = useRouter();
+  const breadcrumbs = useBreadcrumbs(asPath);
 
   const responsiveBreadcrumbs = useBreakpointValue({
     base: breadcrumbs.slice(-2),
@@ -71,7 +76,7 @@ export default function RouteBreadcrumb({
         <BreadcrumbItem key={href}>
           <NextLink href={href} passHref>
             <BreadcrumbLink
-              textTransform="capitalize"
+              textTransform={textTransform}
               isCurrentPage={href === asPath}
             >
               {transform(text)}

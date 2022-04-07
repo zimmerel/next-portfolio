@@ -8,14 +8,14 @@ export default function ColorModeSwitch() {
 
   return (
     <IconButton
-      size="md"
-      fontSize="lg"
       aria-label={`Switch to ${otherMode} mode`}
-      variant="ghost"
       color="current"
+      fontSize="lg"
+      icon={<OtherIcon />}
       ml="3"
       onClick={toggleColorMode}
-      icon={<OtherIcon />}
+      size="md"
+      variant="ghost"
     />
   );
 }

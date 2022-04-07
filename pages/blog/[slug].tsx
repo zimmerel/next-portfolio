@@ -32,10 +32,9 @@ export const getStaticProps: GetStaticProps<
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
   const posts = await postsApi.getAllSorted("date", ["slug"]);
+
   return {
-    paths: posts.map(({ slug }) => ({
-      params: { slug },
-    })),
+    paths: posts.map(({ slug }) => ({ params: { slug } })),
     fallback: false,
   };
 };
