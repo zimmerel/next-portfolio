@@ -9,12 +9,13 @@ type DateInput = Date | string | number;
  * @returns resulting Date object
  */
 function parse(inputDate: DateInput) {
-  if (typeof inputDate === "string") {
-    return parseISO(inputDate);
-  } else if (typeof inputDate === "number") {
-    return new Date(inputDate);
-  } else {
-    return inputDate;
+  switch (typeof inputDate) {
+    case "string":
+      return parseISO(inputDate);
+    case "number":
+      return new Date(inputDate);
+    default:
+      return inputDate;
   }
 }
 
@@ -24,7 +25,7 @@ function parse(inputDate: DateInput) {
  * or number of milliseconds since epoch.
  * @param formatStr - specify format for return value.
  */
-export function formatDate(inputDate: DateInput, formatStr: string = "MMM do") {
+export function formatDate(inputDate: DateInput, formatStr: string) {
   const date = parse(inputDate);
   const now = new Date();
 
@@ -46,7 +47,7 @@ export function formatDate(inputDate: DateInput, formatStr: string = "MMM do") {
  */
 export default function useDateFormat(
   inputDate: DateInput,
-  formatStr: string = "MMM do"
+  formatStr: string = "MMMM do, yyyy"
 ) {
   return useMemo(
     () => formatDate(inputDate, formatStr),

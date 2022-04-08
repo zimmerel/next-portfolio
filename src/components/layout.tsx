@@ -9,7 +9,7 @@ interface Props {
 
 export default function Layout({ children }: Props) {
   return (
-    <Container maxW="container.md">
+    <Container maxW="container.sm">
       <Header />
       <Box as="main" mt={3}>
         {children}

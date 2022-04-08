@@ -1,12 +1,23 @@
 import { jest } from "@jest/globals";
+import fs from "fs";
+import matter from "gray-matter";
 import { PostsApi } from "./posts-api";
 
+jest.mock("fs");
+jest.mock("path");
+jest.mock("gray-matter");
+
 describe("PostsApi", () => {
+  const mockFileInfo: Record<string, string> = {
+    "/fake/posts/post-one.md": "# heading",
+    "/fake/posts/post-two.md": "## heading",
+    "/fake/posts/post-three.md": "# heading",
+  };
   const fakePostsDirectory = "dir/posts/";
   const fakePostFiles: Record<string, string> = {
-    "post-one.mdx": "# heading",
-    "post-two.mdx": "## heading",
-    "post-three.mdx": "# heading",
+    "post-one.md": "# heading",
+    "post-two.md": "## heading",
+    "post-three.md": "# heading",
   };
 
   const fakeMatterData = {
@@ -15,10 +26,8 @@ describe("PostsApi", () => {
     date: new Date().toISOString(),
   };
   let postsApi: PostsApi;
-  const mockReaddir = jest.fn(async (input: string) =>
-    Object.keys(fakePostFiles)
-  );
-  const mockReadFile = jest.fn(async (input: string) => {
+  const mockReaddir = jest.fn((input: string) => Object.keys(fakePostFiles));
+  const mockReadFile = jest.fn((input: string) => {
     const fileName = input.split("/").at(-1) ?? "";
     const fileContents = fakePostFiles[fileName];
     if (!fileContents) {
@@ -26,60 +35,56 @@ describe("PostsApi", () => {
     }
     return fileContents;
   });
-  const mockJoin = jest.fn((...args: string[]) => args.join("/"));
   const mockMatter = jest.fn((input: string) => ({
     data: fakeMatterData,
     content: input,
   }));
-  const mockCompile = jest.fn(async (input?: string) => input ?? "");
 
   beforeEach(() => {
     mockReaddir.mockClear();
     mockReadFile.mockClear();
-    mockJoin.mockClear();
     mockMatter.mockClear();
-    mockCompile.mockClear();
 
-    postsApi = new PostsApi(fakePostsDirectory, {
-      fs: { readdir: mockReaddir, readFile: mockReadFile },
-      path: { join: mockJoin },
-      matter: mockMatter,
-      compile: mockCompile,
-    });
+    postsApi = new PostsApi(fakePostsDirectory);
   });
 
   describe("postsApi.getSlugs()", () => {
-    it("should get list of file names in postsDirectory", async () => {
-      const slugs = await postsApi.getSlugs();
+    it("should get list of file names in postsDirectory", () => {
+      fs.readdirSync as jest.MockedFunction<typeof fs.readdirSync>
+      fs.readdirSync
+      if (jest.isMockFunction(fs.readdirSync)) {
+        (
+          
+        ).mockReturnValue("");
+      }
+      const slugs = postsApi.getSlugs();
       expect(slugs).toStrictEqual(Object.keys(fakePostFiles));
       expect(mockReaddir).toBeCalledWith(fakePostsDirectory);
     });
   });
 
   describe("postsApi.getBySlug()", () => {
-    it("should get post data from slug with or without extension", async () => {
-      const slugs = ["post-one", "post-one.mdx"];
-      const posts = await Promise.all(
-        slugs.map((slug) => postsApi.getBySlug(slug, ["content"]))
-      );
+    it("should get post data from slug with or without extension", () => {
+      const slugs = ["post-one", "post-one.md"];
+      const posts = slugs.map((slug) => postsApi.getBySlug(slug, ["content"]));
       expect(posts[0]).toBeTruthy();
       expect(posts[0]).toStrictEqual(posts[1]);
     });
-    it("should only get specified fields", async () => {
-      const post = await postsApi.getBySlug("post-one", ["title", "author"]);
-      expect(Object.keys(post)).toStrictEqual(["title", "author"]);
+    it("should only get specified fields", () => {
+      const post = postsApi.getBySlug("post-one", ["title", "date"]);
+      expect(Object.keys(post)).toStrictEqual(["title", "date"]);
     });
-    it("should use matter function to parse frontmatter", async () => {
-      await postsApi.getBySlug("post-one", ["title", "author"]);
+    it("should use matter function to parse frontmatter", () => {
+      postsApi.getBySlug("post-one", ["title", "date"]);
       expect(mockMatter).toHaveBeenCalledWith(fakePostFiles["post-one.mdx"]);
     });
-    it("should compile content when content field is specified", async () => {
-      const post = await postsApi.getBySlug("post-one", ["content"]);
+    it("should compile content when content field is specified", () => {
+      const post = postsApi.getBySlug("post-one", ["content"]);
       expect(post.content).toBeTruthy();
       expect(mockCompile).toHaveBeenCalledWith(fakePostFiles["post-one.mdx"]);
     });
-    it("should throw an error if a file is not found", async () => {
-      await expect(
+    it("should throw an error if a file is not found", () => {
+      expect(
         postsApi.getBySlug("post-ihasdofjahoifj", ["slug"])
       ).rejects.toBeInstanceOf(Error);
     });
