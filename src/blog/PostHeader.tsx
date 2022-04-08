@@ -1,4 +1,4 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Heading, Text } from "@chakra-ui/react";
 import { PostData } from "./types";
 import useDateFormat from "./useDateFormat";
 
@@ -9,8 +9,8 @@ export default function PostHeader({ date, title }: Props) {
 
   return (
     <Box mb={6}>
-      <Heading color={"purple.400"}>{title}</Heading>
-      <Heading size="sm">{formattedDate}</Heading>
+      <Heading fontSize="4xl">{title}</Heading>
+      <Text fontSize="sm">{formattedDate}</Text>
     </Box>
   );
 }

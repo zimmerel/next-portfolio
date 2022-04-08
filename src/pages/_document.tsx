@@ -1,11 +1,15 @@
 import { ColorModeScript } from "@chakra-ui/system";
 import { Head, Html, Main, NextScript } from "next/document";
-import theme from "../src/theme";
+import theme from "../theme";
 
 export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:300,400,500,700&display=swap"
+          rel="stylesheet"
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"

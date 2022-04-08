@@ -1,9 +1,9 @@
-import { Box, StackDivider, VStack } from "@chakra-ui/react";
+import { Box, VStack } from "@chakra-ui/react";
 import Head from "next/head";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
-import type { PostData } from "../../src/blog/types";
-import { postsApi } from "../../src/blog/posts-api";
-import PostPreview from "../../src/blog/PostPreview";
+import type { PostData } from "../../blog/types";
+import { postsApi } from "../../blog/posts-api";
+import PostPreview from "../../blog/PostPreview";
 
 const fields = ["title", "slug", "date", "excerpt"] as const;
 type Fields = typeof fields[number];

@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
-import PostLayout from "../../src/blog/PostLayout";
-import { postsApi } from "../../src/blog/posts-api";
-import BlogPost from "../../src/blog/BlogPost";
-import type { PostData } from "../../src/blog/types";
-import markdownToHtml from "../../src/blog/markdownToHtml";
+import PostLayout from "../../blog/PostLayout";
+import { postsApi } from "../../blog/posts-api";
+import BlogPost from "../../blog/BlogPost";
+import type { PostData } from "../../blog/types";
+import markdownToHtml from "../../blog/markdownToHtml";
 
 export const getStaticProps: GetStaticProps<
   PostData,
