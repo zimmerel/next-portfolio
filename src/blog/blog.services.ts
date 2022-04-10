@@ -5,10 +5,9 @@ import blogConfig from "./blog.config";
 import PostService from "./PostService";
 
 /**
- *
- * @returns a new {PostService} instance
+ * Get a new post service instance
  */
-export default function getPostService() {
+export function getPostService(): PostService {
   return new PostService({
     directory: blogConfig.postsDirectory,
     fs,

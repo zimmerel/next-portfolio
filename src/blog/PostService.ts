@@ -14,7 +14,7 @@ interface PostServiceProps {
     readFileSync: (path: string, opt: BufferEncoding) => string;
   };
   /**
-   * Parse frontmatter from raw markdown file
+   * Parse frontmatter from raw markdown file contents
    */
   parse: (input: string) => {
     data: Record<string, any>;

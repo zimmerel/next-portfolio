@@ -6,7 +6,7 @@ import {
   Link,
   useColorModeValue,
 } from "@chakra-ui/react";
-import siteConfig from "../site-config";
+import siteConfig from "../site.config";
 import { GitHubIcon } from "./icons";
 import ColorModeSwitch from "./ColorModeSwitch";
 import RouteBreadcrumb from "./RouteBreadcrumb";

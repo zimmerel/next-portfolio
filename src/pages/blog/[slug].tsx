@@ -5,6 +5,7 @@ import Head from "next/head";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { BlogPost, PostData, getPostService } from "../../blog";
 import markdownToHtml from "../../blog/markdownToHtml";
+import formatDate from "../../blog/formatDate";
 
 export const getStaticProps: GetStaticProps<
   PostData,
@@ -20,11 +21,13 @@ export const getStaticProps: GetStaticProps<
     "content",
   ]);
   const content = await markdownToHtml(post.content || "");
+  const date = formatDate(post.date, "MMMM do, yyyy");
 
   return {
     props: {
       ...post,
       content,
+      date,
     },
   };
 };

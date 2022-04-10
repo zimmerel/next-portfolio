@@ -1,32 +1,12 @@
 import { differenceInHours, format, parseISO } from "date-fns";
-import { useMemo } from "react";
-
-type DateInput = Date | string | number;
-
-/**
- * @param inputDate Can be Date object, ISO date string,
- * or number of milliseconds since epoch.
- * @returns resulting Date object
- */
-function parse(inputDate: DateInput) {
-  switch (typeof inputDate) {
-    case "string":
-      return parseISO(inputDate);
-    case "number":
-      return new Date(inputDate);
-    default:
-      return inputDate;
-  }
-}
 
 /**
  * Takes a date and returns a formatted string representing that date
- * @param inputDate - Can be Date object, ISO date string
- * or number of milliseconds since epoch.
+ * @param inputDate - ISO date string
  * @param formatStr - specify format for return value.
  */
-export default function formatDate(inputDate: DateInput, formatStr: string) {
-  const date = parse(inputDate);
+export default function formatDate(inputDate: string, formatStr: string) {
+  const date = parseISO(inputDate);
   const now = new Date();
 
   const hoursDiff = differenceInHours(now, date);
