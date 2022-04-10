@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "yarn node --experimental-vm-modules $(yarn bin jest)"
+    "test": "jest --watch",
+    "test:esm": "yarn node --experimental-vm-modules $(yarn bin jest)"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.5",

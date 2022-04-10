@@ -1,6 +1,6 @@
 import { Heading, Link, Text, VStack } from "@chakra-ui/react";
 import { PostData } from "./types";
-import useDateFormat from "./useDateFormat";
+import formatDate from "./formatDate";
 import NextLink from "next/link";
 
 type PreviewPostData = Pick<PostData, "date" | "title" | "excerpt" | "slug">;
@@ -11,7 +11,7 @@ interface Props {
 
 export default function PostPreview({ post }: Props) {
   const { date, title, excerpt, slug } = post;
-  const formattedDate = useDateFormat(date);
+  const formattedDate = formatDate(date, "MMMM do, yyyy");
 
   return (
     <VStack w="full" align="start" spacing={5}>

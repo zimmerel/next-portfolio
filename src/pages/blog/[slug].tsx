@@ -1,12 +1,9 @@
-import { CircularProgress } from "@chakra-ui/react";
+import { Box, CircularProgress } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
-import PostLayout from "../../blog/PostLayout";
-import { postsApi } from "../../blog/posts-api";
-import BlogPost from "../../blog/BlogPost";
-import type { PostData } from "../../blog/types";
+import { BlogPost, PostData, getPostService } from "../../blog";
 import markdownToHtml from "../../blog/markdownToHtml";
 
 export const getStaticProps: GetStaticProps<
@@ -16,7 +13,7 @@ export const getStaticProps: GetStaticProps<
   if (!params?.slug) {
     return { notFound: true };
   }
-  const post = postsApi.getBySlug(params.slug, [
+  const post = getPostService().getBySlug(params.slug, [
     "title",
     "date",
     "slug",
@@ -33,7 +30,7 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
-  const posts = postsApi
+  const posts = getPostService()
     .getAll(["date", "slug"])
     .sort((postA, postZ) => (postA.date > postZ.date ? -1 : 1));
 
@@ -53,7 +50,7 @@ export default function Post(props: Props) {
   }
 
   return (
-    <PostLayout>
+    <Box>
       {router.isFallback ? (
         <CircularProgress />
       ) : (
@@ -64,6 +61,6 @@ export default function Post(props: Props) {
           <BlogPost {...props} />
         </>
       )}
-    </PostLayout>
+    </Box>
   );
 }

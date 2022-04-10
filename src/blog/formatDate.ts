@@ -25,7 +25,7 @@ function parse(inputDate: DateInput) {
  * or number of milliseconds since epoch.
  * @param formatStr - specify format for return value.
  */
-export function formatDate(inputDate: DateInput, formatStr: string) {
+export default function formatDate(inputDate: DateInput, formatStr: string) {
   const date = parse(inputDate);
   const now = new Date();
 
@@ -37,20 +37,4 @@ export function formatDate(inputDate: DateInput, formatStr: string) {
   }
 
   return format(date, formatStr);
-}
-
-/**
- * @see {formatDate}
- * @param inputDate
- * @param formatStr
- * @returns
- */
-export default function useDateFormat(
-  inputDate: DateInput,
-  formatStr: string = "MMMM do, yyyy"
-) {
-  return useMemo(
-    () => formatDate(inputDate, formatStr),
-    [inputDate, formatStr]
-  );
 }
