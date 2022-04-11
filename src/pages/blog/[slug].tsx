@@ -3,9 +3,11 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
-import { BlogPost, PostData, getPostService } from "../../blog";
 import markdownToHtml from "../../blog/markdownToHtml";
-import formatDate from "../../blog/formatDate";
+import BlogPost from "../../blog/BlogPost";
+import getPostService from "../../blog/getPostService";
+import { PostData } from "../../blog/types";
+import formatPostDate from "../../blog/formatPostDate";
 
 export const getStaticProps: GetStaticProps<
   PostData,
@@ -14,6 +16,7 @@ export const getStaticProps: GetStaticProps<
   if (!params?.slug) {
     return { notFound: true };
   }
+
   const post = getPostService().getBySlug(params.slug, [
     "title",
     "date",
@@ -21,7 +24,7 @@ export const getStaticProps: GetStaticProps<
     "content",
   ]);
   const content = await markdownToHtml(post.content || "");
-  const date = formatDate(post.date, "MMMM do, yyyy");
+  const date = formatPostDate(post.date);
 
   return {
     props: {

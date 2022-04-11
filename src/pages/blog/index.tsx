@@ -1,12 +1,10 @@
 import { Box, VStack } from "@chakra-ui/react";
 import Head from "next/head";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
-import {
-  getPostService,
-  formatPostDate,
-  PostPreview,
-  type PostData,
-} from "../../blog";
+import formatPostDate from "../../blog/formatPostDate";
+import getPostService from "../../blog/getPostService";
+import PostPreview from "../../blog/PostPreview";
+import { PostData } from "../../blog/types";
 
 const fields = ["title", "slug", "date", "excerpt"] as const;
 type Fields = typeof fields[number];

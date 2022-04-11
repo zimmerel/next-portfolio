@@ -67,8 +67,6 @@ export default class PostService {
   }
 
   getAll<K extends keyof PostData>(fields: K[]): Pick<PostData, K>[] {
-    const { getSlugs, getBySlug } = this;
-
-    return getSlugs().map((slug) => getBySlug(slug, fields));
+    return this.getSlugs().map((slug) => this.getBySlug(slug, fields));
   }
 }

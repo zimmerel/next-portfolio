@@ -32,7 +32,7 @@ describe("PostsApi", () => {
     postsApi = new PostService({
       directory: fakePostsDirectory,
       fs: mockFs,
-      parse: mockMatter,
+      parse: mockMatter, 
       path,
     });
   });

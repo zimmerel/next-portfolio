@@ -8,5 +8,5 @@ module.exports = createJestConfig({
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   moduleDirectories: ["node_modules", "<rootDir>/"],
   testEnvironment: "jest-environment-jsdom",
-  extensionsToTreatAsEsm: [".ts", ".tsx"],
+  // extensionsToTreatAsEsm: [".ts", ".tsx"],
 });
