@@ -1,22 +1,4 @@
-import {
-  extendTheme,
-  Theme,
-  ThemeConfig,
-  withDefaultColorScheme,
-  theme as baseTheme,
-} from "@chakra-ui/react";
-
-const fonts: Theme["fonts"] = {
-  // body: "Roboto, sans-serif",
-  // heading: "Roboto, sans-serif",
-  ...baseTheme.fonts,
-  mono: "Fira Code, monospace",
-};
-
-const config: ThemeConfig = {
-  initialColorMode: "light",
-  useSystemColorMode: true,
-};
+import { Theme } from "@chakra-ui/react";
 
 const markdownStyles: Theme["styles"]["global"] = {
   a: {
@@ -118,10 +100,4 @@ const styles: Theme["styles"] = {
   }),
 };
 
-const theme = extendTheme({
-  fonts,
-  config,
-  styles,
-});
-
-export default theme;
+export default styles;
