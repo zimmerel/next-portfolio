@@ -1,8 +1,8 @@
-import path from "path";
-import fs from "fs";
-import matter from "gray-matter";
-import blogConfig from "./blog.config";
-import PostService from "./PostService";
+import path from 'path';
+import fs from 'fs';
+import matter from 'gray-matter';
+import blogConfig from './blog.config';
+import PostService from './PostService';
 
 /**
  * Get a new post service instance

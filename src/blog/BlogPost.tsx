@@ -1,5 +1,5 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
-import type { PostData } from "./types";
+import { Box, Heading, Text } from '@chakra-ui/react';
+import type { PostData } from './types';
 
 export default function BlogPost({ content, title, date }: PostData) {
   return (
@@ -9,7 +9,7 @@ export default function BlogPost({ content, title, date }: PostData) {
         <Text fontSize="sm">{date}</Text>
       </Box>
       <Box>
-        <Box dangerouslySetInnerHTML={{ __html: content }} />
+        <Box className="md" dangerouslySetInnerHTML={{ __html: content }} />
       </Box>
     </Box>
   );

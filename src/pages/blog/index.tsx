@@ -1,17 +1,17 @@
-import { Box, VStack } from "@chakra-ui/react";
-import Head from "next/head";
-import type { GetStaticProps, InferGetStaticPropsType } from "next";
-import formatPostDate from "../../blog/formatPostDate";
-import getPostService from "../../blog/getPostService";
-import PostPreview from "../../blog/PostPreview";
-import { PostData } from "../../blog/types";
+import { Box, VStack } from '@chakra-ui/react';
+import Head from 'next/head';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import formatPostDate from '../../blog/formatPostDate';
+import getPostService from '../../blog/getPostService';
+import PostPreview from '../../blog/PostPreview';
+import { PostData } from '../../blog/types';
 
-const fields = ["title", "slug", "date", "excerpt"] as const;
+const fields = ['title', 'slug', 'date', 'excerpt'] as const;
 type Fields = typeof fields[number];
 
 export const getStaticProps: GetStaticProps<{
   posts: Pick<PostData, Fields>[];
-}> = async () => {
+}> = async function () {
   const posts = getPostService()
     .getAll([...fields])
     .sort((postA, postZ) => (postA.date > postZ.date ? -1 : 1))
@@ -37,7 +37,7 @@ export default function Index({ posts }: Props) {
       </Head>
       <VStack spacing={12}>
         {posts.map((post) => (
-          <PostPreview key={post.slug} post={post} />
+          <PostPreview key={post.slug} {...post} />
         ))}
       </VStack>
     </Box>

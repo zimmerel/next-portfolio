@@ -1,23 +1,22 @@
-import { Heading, Link, Text, VStack } from "@chakra-ui/react";
-import { PostData } from "./types";
-import NextLink from "next/link";
+import { Heading, Link, Text, VStack } from '@chakra-ui/react';
+import { PostData } from './types';
+import NextLink from 'next/link';
 
-type PreviewPostData = Pick<PostData, "date" | "title" | "excerpt" | "slug">;
+type PostPreviewProps = Pick<PostData, 'date' | 'title' | 'excerpt' | 'slug'>;
 
-interface Props {
-  post: PreviewPostData;
-}
-
-export default function PostPreview({ post }: Props) {
-  const { date, title, excerpt, slug } = post;
-
+export default function PostPreview({
+  date,
+  title,
+  excerpt,
+  slug,
+}: PostPreviewProps) {
   return (
     <VStack w="full" align="start" spacing={5}>
       <VStack spacing={0.5} align="start">
         <Heading fontWeight="bold" fontSize="4xl">
           <NextLink
             href={{
-              pathname: "/blog/[slug]",
+              pathname: '/blog/[slug]',
               query: { slug },
             }}
             passHref
