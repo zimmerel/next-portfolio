@@ -1,6 +1,6 @@
 import { Flex, Heading } from '@chakra-ui/react';
 
-export default function Error404() {
+export default function Error500() {
   return (
     <Flex
       _dark={{ color: 'white' }}
@@ -10,7 +10,7 @@ export default function Error404() {
       justify="center"
     >
       <Heading as="h4" size="md">
-        Page Not Found
+        There was a problem
       </Heading>
     </Flex>
   );
