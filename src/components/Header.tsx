@@ -5,16 +5,14 @@ import {
   Icon,
   Link,
   useColorModeValue,
-} from "@chakra-ui/react";
-import siteConfig from "../site.config";
-import { GitHubIcon } from "./icons";
-import ColorModeSwitch from "./ColorModeSwitch";
-import RouteBreadcrumb from "./RouteBreadcrumb";
+} from '@chakra-ui/react';
+import siteConfig from '../site.config';
+import { GitHubIcon } from './icons';
+import ColorModeSwitch from './ColorModeSwitch';
 
 function HeaderContent() {
   return (
     <Flex w="100%" h="100%" align="center" justify="space-between" gap={3}>
-      <RouteBreadcrumb />
       <Flex justify="flex-end" align="center" color="gray.400" maxW="1100px">
         <Link
           isExternal
@@ -25,7 +23,7 @@ function HeaderContent() {
             as={GitHubIcon}
             display="block"
             transition="color 0.3s"
-            _hover={{ color: "gray.500" }}
+            _hover={{ color: 'gray.500' }}
             boxSize="5"
           />
         </Link>
@@ -35,8 +33,8 @@ function HeaderContent() {
   );
 }
 
-export default function Header(props: HTMLChakraProps<"header">) {
-  const headerBg = useColorModeValue("white", "gray.800");
+export default function Header(props: HTMLChakraProps<'header'>) {
+  const headerBg = useColorModeValue('white', 'gray.800');
   return (
     <chakra.header
       pos="sticky"
