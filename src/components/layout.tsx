@@ -1,7 +1,6 @@
-import { Container, Box, useColorModeValue } from "@chakra-ui/react";
-import { ReactNode } from "react";
-import Header from "./Header";
-import RouteBreadcrumb from "./RouteBreadcrumb";
+import { Container, Box, Divider } from '@chakra-ui/react';
+import { ReactNode } from 'react';
+import Footer from './Footer';
 
 interface Props {
   children: ReactNode;
@@ -10,10 +9,11 @@ interface Props {
 export default function Layout({ children }: Props) {
   return (
     <Container maxW="container.sm">
-      <Header />
-      <Box as="main" mt={3}>
+      <Box as="main" mt={6} mb={12}>
         {children}
       </Box>
+      <Divider />
+      <Footer />
     </Container>
   );
 }
