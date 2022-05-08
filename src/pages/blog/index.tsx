@@ -1,10 +1,10 @@
 import { Box, VStack } from '@chakra-ui/react';
 import Head from 'next/head';
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import formatPostDate from '../../blog/formatPostDate';
+import reformatIsoDate from '../../util/reformatIsoDate';
 import getPostService from '../../blog/getPostService';
 import PostPreview from '../../blog/PostPreview';
-import { PostData } from '../../blog/types';
+import type { PostData } from '../../blog/types';
 
 const fields = ['title', 'slug', 'date', 'excerpt'] as const;
 type Fields = typeof fields[number];
@@ -17,7 +17,7 @@ export const getStaticProps: GetStaticProps<{
     .sort((postA, postZ) => (postA.date > postZ.date ? -1 : 1))
     .map((post) => ({
       ...post,
-      date: formatPostDate(post.date),
+      date: reformatIsoDate(post.date),
     }));
 
   return {
