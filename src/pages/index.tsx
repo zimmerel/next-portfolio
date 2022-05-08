@@ -10,7 +10,6 @@ export default function Home() {
           name="description"
           content="Portfolio of Zach Riel. Created with Next.js and ChakraUI"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Box display="flex" justifyContent="space-between">
         <Flex direction="column" gap={2}>

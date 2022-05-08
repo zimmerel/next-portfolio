@@ -1,6 +1,6 @@
-import { ColorModeScript } from "@chakra-ui/system";
-import { Head, Html, Main, NextScript } from "next/document";
-import theme from "../theme";
+import { ColorModeScript } from '@chakra-ui/system';
+import { Head, Html, Main, NextScript } from 'next/document';
+import theme from '../theme';
 
 export default function Document() {
   return (
@@ -27,6 +27,7 @@ export default function Document() {
           sizes="16x16"
           href="/favicon-16x16.png"
         />
+        <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <body>
