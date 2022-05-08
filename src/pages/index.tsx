@@ -1,12 +1,11 @@
-import { Box, Heading, Text, Link, Flex } from "@chakra-ui/react";
-import Head from "next/head";
-import NextLink from "next/link";
+import { Box, Heading, Text, Flex } from '@chakra-ui/react';
+import Head from 'next/head';
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Zach Riel</title>
+        <title>Zach&apos;s Stuff</title>
         <meta
           name="description"
           content="Portfolio of Zach Riel. Created with Next.js and ChakraUI"
@@ -19,13 +18,6 @@ export default function Home() {
           <Text>
             I like to write code and solve problems. This site is to share my
             work and thoughts.
-          </Text>
-          <Text>
-            Check out my{" "}
-            <NextLink href="/blog" passHref>
-              <Link>blog</Link>
-            </NextLink>
-            .
           </Text>
         </Flex>
       </Box>

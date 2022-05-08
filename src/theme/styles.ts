@@ -1,4 +1,4 @@
-import { Theme } from '@chakra-ui/react';
+import type { Theme } from '@chakra-ui/react';
 
 const styles: Theme['styles'] = {
   global: (props) => {

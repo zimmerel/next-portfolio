@@ -1,18 +1,13 @@
-import {
-  extendTheme,
-  Theme,
-  ThemeConfig,
-  theme as baseTheme,
-} from "@chakra-ui/react";
-import styles from "./styles";
+import { extendTheme, theme as baseTheme, type Theme } from '@chakra-ui/react';
+import styles from './styles';
 
-const fonts: Theme["fonts"] = {
+const fonts: Theme['fonts'] = {
   ...baseTheme.fonts,
-  mono: "Fira Code, monospace",
+  mono: 'Fira Code, monospace',
 };
 
-const config: ThemeConfig = {
-  initialColorMode: "light",
+const config: Theme['config'] = {
+  initialColorMode: 'light',
   useSystemColorMode: true,
 };
 
