@@ -9,6 +9,13 @@
     "test": "jest --watch",
     "test:esm": "yarn node --experimental-vm-modules $(yarn bin jest)"
   },
+  "eslintConfig": {
+    "extends": ["next/core-web-vitals", "prettier"],
+    "ignorePatterns": [
+      "node_modules",
+      "dist"
+    ]
+  },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.5",
     "@chakra-ui/react": "^1.8.8",
@@ -42,6 +49,5 @@
     "prettier": "^2.5.1",
     "sass": "^1.50.0",
     "typescript": "latest"
-  },
-  "packageManager": "yarn@3.2.0"
+  }
 }

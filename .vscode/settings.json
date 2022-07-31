@@ -1,12 +1,1 @@
-{
-  "search.exclude": {
-    "**/.yarn": true,
-    "**/.pnp.*": true
-  },
-  "eslint.nodePath": ".yarn/sdks",
-  "typescript.tsdk": ".yarn/sdks/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  "cSpell.words": ["Chakra", "rehype"],
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
-  "jest.jestCommandLine": "yarn test"
-}
+{}
