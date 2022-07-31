@@ -1,70 +1,73 @@
 lockfileVersion: 5.4
 
-specifiers:
-  '@chakra-ui/icons': ^2.0.4
-  '@chakra-ui/react': ^2.2.4
-  '@chakra-ui/system': ^2.2.2
-  '@emotion/react': ^11.10.0
-  '@emotion/styled': ^11.10.0
-  '@testing-library/jest-dom': ^5.16.4
-  '@testing-library/react': ^13.3.0
-  '@types/jest': ^28.1.6
-  '@types/node': ^18.6.3
-  '@types/react': 18.0.15
-  '@types/testing-library__jest-dom': ^5.14.5
-  date-fns: ^2.29.1
-  eslint: 8.20.0
-  eslint-config-next: 12.2.3
-  eslint-config-prettier: ^8.5.0
-  framer-motion: ^6.5.1
-  gray-matter: ^4.0.3
-  jest: ^28.1.3
-  next: ^12.2.3
-  prettier: ^2.7.1
-  react: ^18.2.0
-  react-dom: ^18.2.0
-  rehype-highlight: ^5.0.2
-  rehype-react: ^7.1.1
-  rehype-stringify: ^9.0.3
-  remark-gfm: ^3.0.1
-  remark-parse: ^10.0.1
-  remark-rehype: ^10.1.0
-  sass: ^1.54.0
-  typescript: ^4.7.4
+importers:
 
-dependencies:
-  '@chakra-ui/icons': 2.0.4_yvhl5ql2jypczm6naccxme2hbi
-  '@chakra-ui/react': 2.2.4_bdbj5fmnflsx5dx2nipfb2qkou
-  '@chakra-ui/system': 2.2.2_rq3l25qc4qpq3j4w6o4x7hatzy
-  '@emotion/react': 11.10.0_szkdlbnthht4v3jvm76fn7u6na
-  '@emotion/styled': 11.10.0_dmg4xiq2y23ndyok75nryjla4y
-  date-fns: 2.29.1
-  framer-motion: 6.5.1_biqbaboplfbrettd7655fr4n2y
-  gray-matter: 4.0.3
-  next: 12.2.3_ckhwt5v7fywslkplh6p4u2aony
-  react: 18.2.0
-  react-dom: 18.2.0_react@18.2.0
-  rehype-highlight: 5.0.2
-  rehype-react: 7.1.1_@types+react@18.0.15
-  rehype-stringify: 9.0.3
-  remark-gfm: 3.0.1
-  remark-parse: 10.0.1
-  remark-rehype: 10.1.0
-
-devDependencies:
-  '@testing-library/jest-dom': 5.16.4
-  '@testing-library/react': 13.3.0_biqbaboplfbrettd7655fr4n2y
-  '@types/jest': 28.1.6
-  '@types/node': 18.6.3
-  '@types/react': 18.0.15
-  '@types/testing-library__jest-dom': 5.14.5
-  eslint: 8.20.0
-  eslint-config-next: 12.2.3_he2ccbldppg44uulnyq4rwocfa
-  eslint-config-prettier: 8.5.0_eslint@8.20.0
-  jest: 28.1.3_@types+node@18.6.3
-  prettier: 2.7.1
-  sass: 1.54.0
-  typescript: 4.7.4
+  .:
+    specifiers:
+      '@chakra-ui/icons': ^2.0.4
+      '@chakra-ui/react': ^2.2.4
+      '@chakra-ui/system': ^2.2.2
+      '@emotion/react': ^11.10.0
+      '@emotion/styled': ^11.10.0
+      '@testing-library/jest-dom': ^5.16.4
+      '@testing-library/react': ^13.3.0
+      '@types/jest': ^28.1.6
+      '@types/node': ^18.6.3
+      '@types/react': 18.0.15
+      '@types/testing-library__jest-dom': ^5.14.5
+      date-fns: ^2.29.1
+      eslint: 8.20.0
+      eslint-config-next: 12.2.3
+      eslint-config-prettier: ^8.5.0
+      framer-motion: ^6.5.1
+      gray-matter: ^4.0.3
+      jest: ^28.1.3
+      next: ^12.2.3
+      pnpm: ^7.8.0
+      prettier: ^2.7.1
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      rehype-highlight: ^5.0.2
+      rehype-react: ^7.1.1
+      rehype-stringify: ^9.0.3
+      remark-gfm: ^3.0.1
+      remark-parse: ^10.0.1
+      remark-rehype: ^10.1.0
+      sass: ^1.54.0
+      typescript: ^4.7.4
+    dependencies:
+      '@chakra-ui/icons': 2.0.4_yvhl5ql2jypczm6naccxme2hbi
+      '@chakra-ui/react': 2.2.4_bdbj5fmnflsx5dx2nipfb2qkou
+      '@chakra-ui/system': 2.2.2_rq3l25qc4qpq3j4w6o4x7hatzy
+      '@emotion/react': 11.10.0_szkdlbnthht4v3jvm76fn7u6na
+      '@emotion/styled': 11.10.0_dmg4xiq2y23ndyok75nryjla4y
+      date-fns: 2.29.1
+      framer-motion: 6.5.1_biqbaboplfbrettd7655fr4n2y
+      gray-matter: 4.0.3
+      next: 12.2.3_ckhwt5v7fywslkplh6p4u2aony
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      rehype-highlight: 5.0.2
+      rehype-react: 7.1.1_@types+react@18.0.15
+      rehype-stringify: 9.0.3
+      remark-gfm: 3.0.1
+      remark-parse: 10.0.1
+      remark-rehype: 10.1.0
+    devDependencies:
+      '@testing-library/jest-dom': 5.16.4
+      '@testing-library/react': 13.3.0_biqbaboplfbrettd7655fr4n2y
+      '@types/jest': 28.1.6
+      '@types/node': 18.6.3
+      '@types/react': 18.0.15
+      '@types/testing-library__jest-dom': 5.14.5
+      eslint: 8.20.0
+      eslint-config-next: 12.2.3_he2ccbldppg44uulnyq4rwocfa
+      eslint-config-prettier: 8.5.0_eslint@8.20.0
+      jest: 28.1.3_@types+node@18.6.3
+      pnpm: 7.8.0
+      prettier: 2.7.1
+      sass: 1.54.0
+      typescript: 4.7.4
 
 packages:
 
@@ -5009,6 +5012,12 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       find-up: 4.1.0
+    dev: true
+
+  /pnpm/7.8.0:
+    resolution: {integrity: sha512-jzb9/gto4nwuVA2itTRk0PJhuaZcA1NBRB298UzXhqKZQMjtHCS+KLzh7RWk5n3g+KnMg5FHr6Mwg1L62dBz1A==}
+    engines: {node: '>=14.6'}
+    hasBin: true
     dev: true
 
   /popmotion/11.0.3:
