@@ -1,10 +1,12 @@
 {
   "name": "zmrl-portfolio-monorepo",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "lint": "next lint",
-    "test": "jest --watch"
+    "lint": "eslint packages/*/ apps/*/",
+    "test": "jest --watch",
+    "apps:dev": "pnpm --filter ./apps/** dev"
   },
   "eslintConfig": {
     "extends": [
@@ -18,8 +20,7 @@
     "settings": {
       "next": {
         "rootDir": [
-          "apps/main/",
-          "apps/blog/"
+          "apps/*/"
         ]
       }
     }

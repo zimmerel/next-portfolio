@@ -1,4 +1,3 @@
-import { Box, CircularProgress } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Head from 'next/head';
@@ -7,11 +6,11 @@ import type {
   GetStaticProps,
   InferGetStaticPropsType,
 } from 'next';
-import markdownToHtml from '../blog/markdownToHtml';
-import BlogPost from '../blog/BlogPost';
-import getPostService from '../blog/getPostService';
-import { PostData } from '../blog/types';
-import {reformatIsoDate} from '@zmrl/portfolio-date-util';
+import { markdownToHtml } from '@zmrl/portfolio-process-markdown';
+import BlogPost from '../BlogPost';
+import getPostService from '../getPostService';
+import { PostData } from '../types';
+import { reformatIsoDate } from '@zmrl/portfolio-date-util';
 
 type WithSlug = { slug: string };
 
@@ -60,9 +59,9 @@ export default function Post(props: Props) {
   }
 
   return (
-    <Box>
+    <div>
       {router.isFallback ? (
-        <CircularProgress />
+        <>...Progress</>
       ) : (
         <>
           <Head>
@@ -71,6 +70,6 @@ export default function Post(props: Props) {
           <BlogPost {...props} />
         </>
       )}
-    </Box>
+    </div>
   );
 }

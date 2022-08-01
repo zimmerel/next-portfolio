@@ -12,8 +12,12 @@
     "next": "^12.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "gray-matter": "^4.0.3",
     "@zmrl/portfolio-testing": "workspace:*",
-    "@zmrl/portfolio-styles": "workspace:*"
+    "@zmrl/portfolio-styles": "workspace:*",
+    "@zmrl/portfolio-common": "workspace:*",
+    "@zmrl/portfolio-date-util": "workspace:*",
+    "@zmrl/portfolio-process-markdown": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "18.0.15",

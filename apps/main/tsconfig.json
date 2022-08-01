@@ -1,4 +1,4 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["next-env.d.ts", "src", "jest.config.js", "next.config.js"]
+  "include": ["next-env.d.ts", "src", "jest.config.mjs", "next.config.mjs"]
 }

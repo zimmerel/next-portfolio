@@ -1,5 +1,5 @@
-import path from "path";
-import type { PostData } from "./types";
+import path from 'path';
+import type { PostData } from './types';
 
 interface PostServiceProps {
   /**
@@ -7,7 +7,7 @@ interface PostServiceProps {
    */
   directory: string;
   /**
-   * Methods for performing filesystem queries
+   * Methods for working with filesystem
    */
   fs: {
     readdirSync: (dir: string) => string[];
@@ -21,9 +21,9 @@ interface PostServiceProps {
     content: string;
   };
   /**
-   * Methods to manipulate paths
+   * Methods for working with paths
    */
-  path: Pick<typeof path, "join">;
+  path: Pick<typeof path, 'join'>;
 }
 
 export default class PostService {
@@ -41,18 +41,18 @@ export default class PostService {
   ): Pick<PostData, K> {
     const { fs, parse, directory, path } = this.props;
 
-    const realSlug = slug.replace(/\.md$/, "");
+    const realSlug = slug.replace(/\.md$/, '');
     const fullPath = path.join(directory, `${realSlug}.md`);
-    const fileContents = fs.readFileSync(fullPath, "utf-8");
+    const fileContents = fs.readFileSync(fullPath, 'utf-8');
 
     const { data, content } = parse(fileContents);
 
     // Ensure only the minimal needed data is exposed
     const processField = (field: K): PostData[K] => {
       switch (field) {
-        case "slug":
+        case 'slug':
           return realSlug;
-        case "content":
+        case 'content':
           return content;
         default:
           return data[field];

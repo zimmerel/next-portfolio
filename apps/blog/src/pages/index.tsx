@@ -1,10 +1,9 @@
-import { Box, VStack } from '@chakra-ui/react';
 import Head from 'next/head';
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import reformatIsoDate from '../../util/reformatIsoDate';
-import getPostService from '../../blog/getPostService';
-import PostPreview from '../../blog/PostPreview';
-import type { PostData } from '../../blog/types';
+import { reformatIsoDate } from '@zmrl/portfolio-date-util';
+import getPostService from '../getPostService';
+import PostPreview from '../PostPreview';
+import type { PostData } from '../types';
 
 const fields = ['title', 'slug', 'date', 'excerpt'] as const;
 type Fields = typeof fields[number];
@@ -31,15 +30,15 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export default function Index({ posts }: Props) {
   return (
-    <Box>
+    <div>
       <Head>
         <title>Blog - Index</title>
       </Head>
-      <VStack spacing={12}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
         {posts.map((post) => (
           <PostPreview key={post.slug} {...post} />
         ))}
-      </VStack>
-    </Box>
+      </div>
+    </div>
   );
 }
