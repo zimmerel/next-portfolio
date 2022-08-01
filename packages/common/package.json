@@ -1,0 +1,22 @@
+{
+  "name": "@zmrl/portfolio-common",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./icons": "./dist/icons.js"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "prepare": "pnpm build"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "@zmrl/portfolio-configs": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "18.0.15"
+  }
+}
