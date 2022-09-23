@@ -3,7 +3,9 @@
     "configs": "workspace:*"
   },
   "devDependencies": {
-    "@types/react": "18.0.15"
+    "@types/react": "18.0.15",
+    "tsconfig": "workspace:*",
+    "typescript": "^4.7.4"
   },
   "exports": {
     ".": "./dist/index.js"

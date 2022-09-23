@@ -1,0 +1,11 @@
+{
+  "exports": [
+    "./base.json",
+    "./nextjs.json",
+    "./react-library.json"
+  ],
+  "license": "MIT",
+  "name": "tsconfig",
+  "private": true,
+  "version": "0.1.0"
+}

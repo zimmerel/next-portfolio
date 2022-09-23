@@ -2,7 +2,10 @@
   "dependencies": {
     "date-fns": "^2.29.1"
   },
-  "description": "",
+  "devDependencies": {
+    "tsconfig": "workspace:*",
+    "typescript": "^4.7.4"
+  },
   "exports": {
     ".": "./dist/index.js"
   },

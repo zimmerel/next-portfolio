@@ -8,6 +8,7 @@
     "react-dom": "^18.2.0",
     "styles": "workspace:*",
     "testing": "workspace:*",
+    "tsconfig": "workspace:*",
     "ui": "workspace:*"
   },
   "devDependencies": {
