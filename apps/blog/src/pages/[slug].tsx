@@ -1,16 +1,16 @@
-import { useRouter } from 'next/router';
-import ErrorPage from 'next/error';
-import Head from 'next/head';
+import { reformatIsoDate } from 'date-util';
 import type {
   GetStaticPaths,
   GetStaticProps,
   InferGetStaticPropsType,
 } from 'next';
-import { markdownToHtml } from '@zmrl/portfolio-process-markdown';
+import ErrorPage from 'next/error';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { markdownToHtml } from 'process-markdown';
 import BlogPost from '../BlogPost';
 import getPostService from '../getPostService';
 import { PostData } from '../types';
-import { reformatIsoDate } from '@zmrl/portfolio-date-util';
 
 type WithSlug = { slug: string };
 

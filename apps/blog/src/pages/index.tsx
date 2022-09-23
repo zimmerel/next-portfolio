@@ -1,6 +1,6 @@
-import Head from 'next/head';
+import { reformatIsoDate } from 'date-util';
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { reformatIsoDate } from '@zmrl/portfolio-date-util';
+import Head from 'next/head';
 import getPostService from '../getPostService';
 import PostPreview from '../PostPreview';
 import type { PostData } from '../types';
