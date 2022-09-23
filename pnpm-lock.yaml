@@ -27,26 +27,26 @@ importers:
   apps/blog:
     specifiers:
       '@types/react': 18.0.15
-      '@zmrl/portfolio-common': workspace:*
-      '@zmrl/portfolio-date-util': workspace:*
-      '@zmrl/portfolio-process-markdown': workspace:*
-      '@zmrl/portfolio-styles': workspace:*
-      '@zmrl/portfolio-testing': workspace:*
+      date-util: workspace:*
       gray-matter: ^4.0.3
       next: ^12.2.3
+      process-markdown: workspace:*
       react: ^18.2.0
       react-dom: ^18.2.0
       sass: ^1.54.0
+      styles: workspace:*
+      testing: workspace:*
+      ui: workspace:*
     dependencies:
-      '@zmrl/portfolio-common': link:../../packages/common
-      '@zmrl/portfolio-date-util': link:../../packages/date-util
-      '@zmrl/portfolio-process-markdown': link:../../packages/process-markdown
-      '@zmrl/portfolio-styles': link:../../packages/styles
-      '@zmrl/portfolio-testing': link:../../packages/testing
+      date-util: link:../../packages/date-util
       gray-matter: 4.0.3
       next: 12.2.3_pmtxwaud2i7t46nnb7sfofmose
+      process-markdown: link:../../packages/process-markdown
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      styles: link:../../packages/styles
+      testing: link:../../packages/testing
+      ui: link:../../packages/common
     devDependencies:
       '@types/react': 18.0.15
       sass: 1.54.0
@@ -54,18 +54,18 @@ importers:
   apps/main:
     specifiers:
       '@types/react': 18.0.15
-      '@zmrl/portfolio-common': workspace:*
-      '@zmrl/portfolio-configs': workspace:*
+      configs: workspace:*
       next: ^12.2.3
       react: ^18.2.0
       react-dom: ^18.2.0
       sass: ^1.54.0
+      ui: workspace:*
     dependencies:
-      '@zmrl/portfolio-common': link:../../packages/common
-      '@zmrl/portfolio-configs': link:../../packages/configs
+      configs: link:../../packages/configs
       next: 12.2.3_pmtxwaud2i7t46nnb7sfofmose
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      ui: link:../../packages/common
     devDependencies:
       '@types/react': 18.0.15
       sass: 1.54.0
@@ -73,10 +73,10 @@ importers:
   packages/common:
     specifiers:
       '@types/react': 18.0.15
-      '@zmrl/portfolio-configs': workspace:*
+      configs: workspace:*
       react: ^18.2.0
     dependencies:
-      '@zmrl/portfolio-configs': link:../configs
+      configs: link:../configs
       react: 18.2.0
     devDependencies:
       '@types/react': 18.0.15

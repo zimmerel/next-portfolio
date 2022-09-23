@@ -1,9 +1,8 @@
 {
-  "name": "@zmrl/portfolio-date-util",
-  "version": "0.1.0",
+  "dependencies": {
+    "date-fns": "^2.29.1"
+  },
   "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js"
   },
@@ -11,11 +10,13 @@
     "dist",
     "src"
   ],
+  "main": "dist/index.js",
+  "name": "date-util",
+  "private": true,
   "scripts": {
-    "build": "tsc --build",
+    "build": "tsc -b",
     "prepare": "pnpm build"
   },
-  "dependencies": {
-    "date-fns": "^2.29.1"
-  }
+  "types": "dist/index.d.ts",
+  "version": "0.1.0"
 }

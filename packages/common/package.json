@@ -1,9 +1,10 @@
 {
-  "name": "@zmrl/portfolio-common",
-  "version": "0.1.0",
-  "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "dependencies": {
+    "configs": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "18.0.15"
+  },
   "exports": {
     ".": "./dist/index.js"
   },
@@ -11,15 +12,15 @@
     "dist",
     "src"
   ],
+  "main": "dist/index.js",
+  "name": "ui",
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
   "scripts": {
-    "build": "tsc --build",
+    "build": "tsc -b",
     "prepare": "pnpm build"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "@zmrl/portfolio-configs": "workspace:*"
-  },
-  "devDependencies": {
-    "@types/react": "18.0.15"
-  }
+  "types": "dist/index.d.ts",
+  "version": "0.1.0"
 }

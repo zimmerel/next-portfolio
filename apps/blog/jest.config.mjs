@@ -1,5 +1,5 @@
 import nextJest from 'next/jest';
-import { jestConfig } from '@zmrl/portfolio-testing';
+import { jestConfig } from 'testing';
 
 const createJestConfig = nextJest({ dir: './' });
 

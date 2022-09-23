@@ -8,7 +8,7 @@ interface Props {
 export default function Layout({ children }: Props) {
   return (
     <div>
-        {children}
+      {children}
       <Footer />
     </div>
   );

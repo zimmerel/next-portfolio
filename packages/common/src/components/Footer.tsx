@@ -1,4 +1,4 @@
-import { siteConfig } from '@zmrl/portfolio-configs';
+import { siteConfig } from 'configs';
 import { ComponentPropsWithoutRef } from 'react';
 
 function FooterContent() {
