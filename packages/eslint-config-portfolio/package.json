@@ -4,15 +4,12 @@
     "eslint-config-prettier": "^8.5.0"
   },
   "devDependencies": {
-    "eslint": "8.20.0"
+    "eslint": "8.20.0",
+    "typescript": "^4.8.3"
   },
   "exports": {
     ".": "./index.js"
   },
-  "files": [
-    "index.js",
-    "package.json"
-  ],
   "main": "index.js",
   "name": "eslint-config-portfolio",
   "version": "0.1.0"
