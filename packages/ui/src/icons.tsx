@@ -1,12 +1,10 @@
-const commonDefaultProps = {
-  role: 'img',
-  boxSize: 8,
-};
-
 export const GitHubIcon = {
   displayName: 'GitHubIcon',
   viewBox: '0 0 24 24',
-  defaultProps: commonDefaultProps,
+  defaultProps: {
+    role: 'img',
+    boxSize: 8,
+  },
   path: (
     <path
       fill="currentColor"
