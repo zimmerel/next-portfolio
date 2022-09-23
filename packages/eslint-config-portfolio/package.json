@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "eslint-config-next": "12.2.3",
+    "eslint-config-prettier": "^8.5.0"
+  },
+  "devDependencies": {
+    "eslint": "8.20.0"
+  },
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "package.json"
+  ],
+  "main": "index.js",
+  "name": "eslint-config-portfolio",
+  "version": "0.1.0"
+}
