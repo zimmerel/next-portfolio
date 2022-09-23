@@ -6,7 +6,7 @@
     "preinstall": "npx only-allow pnpm",
     "lint": "eslint packages/*/ apps/*/",
     "test": "jest --watch",
-    "apps:dev": "pnpm --filter ./apps/** dev"
+    "dev:apps": "pnpm --filter ./apps/** dev"
   },
   "eslintConfig": {
     "extends": [
