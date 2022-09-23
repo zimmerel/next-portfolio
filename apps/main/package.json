@@ -11,7 +11,7 @@
     "eslint-config-portfolio": "workspace: *",
     "sass": "^1.54.0"
   },
-  "name": "@zmrl/portfolio",
+  "name": "main-app",
   "scripts": {
     "build": "next build",
     "dev": "next dev",

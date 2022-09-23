@@ -8,6 +8,7 @@ const nextConfig = {
     dirs: ['src'],
   },
   experimental: { esmExternals: true },
+  swcMinify: true,
 };
 
 export default nextConfig;

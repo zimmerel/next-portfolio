@@ -1,4 +1,5 @@
 import { reformatIsoDate } from 'date-util';
+import { markdownToHtml } from 'markdown';
 import type {
   GetStaticPaths,
   GetStaticProps,
@@ -7,7 +8,6 @@ import type {
 import ErrorPage from 'next/error';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { markdownToHtml } from 'process-markdown';
 import BlogPost from '../BlogPost';
 import getPostService from '../getPostService';
 import { PostData } from '../types';
