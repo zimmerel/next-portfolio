@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@types/react": "18.0.21",
-    "eslint-config-portfolio": "workspace:^0.1.0",
+    "eslint-config-portfolio": "workspace:*",
     "sass": "^1.55.0"
   },
   "name": "main-app",

@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@types/react": "18.0.21",
+    "eslint-config-portfolio": "workspace:*",
     "sass": "^1.55.0"
   },
   "name": "blog-app",

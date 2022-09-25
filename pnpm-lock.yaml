@@ -20,6 +20,7 @@ importers:
     specifiers:
       '@types/react': 18.0.21
       date-util: workspace:*
+      eslint-config-portfolio: workspace:*
       gray-matter: ^4.0.3
       markdown: workspace:*
       next: ^12.3.1
@@ -43,13 +44,14 @@ importers:
       ui: link:../../packages/ui
     devDependencies:
       '@types/react': 18.0.21
+      eslint-config-portfolio: link:../../packages/eslint-config-portfolio
       sass: 1.55.0
 
   apps/main:
     specifiers:
       '@types/react': 18.0.21
       configs: workspace:*
-      eslint-config-portfolio: workspace:^0.1.0
+      eslint-config-portfolio: workspace:*
       next: ^12.3.1
       react: ^18.2.0
       react-dom: ^18.2.0
