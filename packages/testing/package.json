@@ -14,16 +14,9 @@
     ".": "./dist/index.js",
     "./setup": "./dist/setup.js"
   },
-  "files": [
-    "src",
-    "dist"
-  ],
-  "main": "dist/index.js",
   "name": "testing",
   "scripts": {
-    "build": "tsc -b",
-    "prepare": "pnpm build"
+    "build": "tsc -b"
   },
-  "types": "dist/index.d.ts",
   "version": "0.1.0"
 }

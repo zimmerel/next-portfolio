@@ -7,22 +7,14 @@
     "tsconfig": "workspace:*",
     "typescript": "^4.8.3"
   },
-  "exports": {
-    ".": "./dist/index.js"
-  },
-  "files": [
-    "dist",
-    "src"
-  ],
-  "main": "dist/index.js",
+  "exports": "./dist/index.js",
+  "license": "MIT",
   "name": "ui",
   "peerDependencies": {
     "react": "^18.2.0"
   },
   "scripts": {
-    "build": "tsc -b",
-    "prepare": "pnpm build"
+    "build": "tsc -b"
   },
-  "types": "dist/index.d.ts",
   "version": "0.1.0"
 }
