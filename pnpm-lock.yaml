@@ -4,20 +4,14 @@ importers:
 
   .:
     specifiers:
-      '@types/jest': ^29.0.3
-      '@types/node': ^18.7.19
       eslint: 8.23.1
       eslint-config-portfolio: workspace:*
-      jest: ^29.0.3
       pnpm: ^7.12.2
       prettier: ^2.7.1
       typescript: ^4.8.3
     devDependencies:
-      '@types/jest': 29.0.3
-      '@types/node': 18.7.19
       eslint: 8.23.1
       eslint-config-portfolio: link:packages/eslint-config-portfolio
-      jest: 29.0.3_@types+node@18.7.19
       pnpm: 7.12.2
       prettier: 2.7.1
       typescript: 4.8.3
@@ -2941,34 +2935,6 @@ packages:
       - ts-node
     dev: true
 
-  /jest-cli/29.0.3_@types+node@18.7.19:
-    resolution: {integrity: sha512-aUy9Gd/Kut1z80eBzG10jAn6BgS3BoBbXyv+uXEqBJ8wnnuZ5RpNfARoskSrTIy1GY4a8f32YGuCMwibtkl9CQ==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    hasBin: true
-    peerDependencies:
-      node-notifier: ^8.0.1 || ^9.0.0 || ^10.0.0
-    peerDependenciesMeta:
-      node-notifier:
-        optional: true
-    dependencies:
-      '@jest/core': 29.0.3
-      '@jest/test-result': 29.0.3
-      '@jest/types': 29.0.3
-      chalk: 4.1.2
-      exit: 0.1.2
-      graceful-fs: 4.2.10
-      import-local: 3.1.0
-      jest-config: 29.0.3_@types+node@18.7.19
-      jest-util: 29.0.3
-      jest-validate: 29.0.3
-      prompts: 2.4.2
-      yargs: 17.5.1
-    transitivePeerDependencies:
-      - '@types/node'
-      - supports-color
-      - ts-node
-    dev: true
-
   /jest-config/29.0.3:
     resolution: {integrity: sha512-U5qkc82HHVYe3fNu2CRXLN4g761Na26rWKf7CjM8LlZB3In1jadEkZdMwsE37rd9RSPV0NfYaCjHdk/gu3v+Ew==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -3364,26 +3330,6 @@ packages:
       '@jest/types': 29.0.3
       import-local: 3.1.0
       jest-cli: 29.0.3
-    transitivePeerDependencies:
-      - '@types/node'
-      - supports-color
-      - ts-node
-    dev: true
-
-  /jest/29.0.3_@types+node@18.7.19:
-    resolution: {integrity: sha512-ElgUtJBLgXM1E8L6K1RW1T96R897YY/3lRYqq9uVcPWtP2AAl/nQ16IYDh/FzQOOQ12VEuLdcPU83mbhG2C3PQ==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    hasBin: true
-    peerDependencies:
-      node-notifier: ^8.0.1 || ^9.0.0 || ^10.0.0
-    peerDependenciesMeta:
-      node-notifier:
-        optional: true
-    dependencies:
-      '@jest/core': 29.0.3
-      '@jest/types': 29.0.3
-      import-local: 3.1.0
-      jest-cli: 29.0.3_@types+node@18.7.19
     transitivePeerDependencies:
       - '@types/node'
       - supports-color

@@ -1,24 +1,21 @@
 {
-  "name": "zmrl-portfolio-monorepo",
+  "name": "zmrl-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "lint": "eslint packages/*/ apps/*/",
-    "test": "jest --watch",
     "dev:apps": "pnpm --filter ./apps/** dev"
   },
   "engines": {
-    "pnpm": ">=7.7.1"
+    "pnpm": ">=7.12.2"
   },
   "devDependencies": {
-    "@types/jest": "^29.0.3",
-    "@types/node": "^18.7.19",
     "eslint": "8.23.1",
     "eslint-config-portfolio": "workspace:*",
-    "jest": "^29.0.3",
     "pnpm": "^7.12.2",
     "prettier": "^2.7.1",
     "typescript": "^4.8.3"
-  }
+  },
+  "packageManager": "pnpm@7.12.2"
 }
