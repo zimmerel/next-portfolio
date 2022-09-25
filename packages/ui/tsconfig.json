@@ -3,6 +3,6 @@
     "outDir": "./dist",
     "noEmit": false
   },
-  "extends": "tsconfig/base.json",
+  "extends": "tsconfig/react-library.json",
   "include": ["src"]
 }
