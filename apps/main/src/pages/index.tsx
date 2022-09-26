@@ -5,10 +5,7 @@ export default function Home() {
     <>
       <Head>
         <title>Zach&apos;s Stuff</title>
-        <meta
-          name="description"
-          content="Portfolio of Zach Riel. Created with Next.js and ChakraUI"
-        />
+        <meta name="description" content="Portfolio by Zach Riel" />
       </Head>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
