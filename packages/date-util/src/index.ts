@@ -1,2 +1,1 @@
-export {default as reformatIsoDate} from './reformatIsoDate'
-  
+export { default as reformatIsoDate } from './reformatIsoDate';
