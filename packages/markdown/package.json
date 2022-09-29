@@ -11,11 +11,13 @@
     "tsconfig": "workspace:*",
     "typescript": "^4.8.3"
   },
-  "exports": "./dist/index.js",
+  "exports": "./src/index.ts",
   "license": "MIT",
+  "main": "./src/index.ts",
   "name": "markdown",
   "scripts": {
     "build": "tsc -b"
   },
+  "type": "module",
   "version": "0.1.0"
 }

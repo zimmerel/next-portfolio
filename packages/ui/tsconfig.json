@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "composite": true,
+    "incremental": true,
     "outDir": "./dist",
     "noEmit": false
   },

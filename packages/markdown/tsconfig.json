@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "noEmit": false
+    "noEmit": false,
+    "composite": true,
+    "incremental": true
   },
   "extends": "tsconfig/base.json",
   "include": ["src"]

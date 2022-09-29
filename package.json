@@ -15,9 +15,9 @@
   "packageManager": "pnpm@7.12.2",
   "private": true,
   "scripts": {
-    "dev:apps": "pnpm -F ./apps/** dev",
+    "dev": "pnpm -F ./apps/** dev",
     "lint": "eslint packages/*/ apps/*/",
-    "pnpm:devPreinstall": "pnpm -r build",
+    "pnpm:devPreinstall": "pnpm -F ./apps/** build",
     "preinstall": "npx only-allow pnpm"
   },
   "version": "0.1.0"

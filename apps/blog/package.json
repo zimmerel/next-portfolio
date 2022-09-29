@@ -1,20 +1,20 @@
 {
   "dependencies": {
-    "date-util": "workspace:*",
-    "gray-matter": "^4.0.3",
-    "markdown": "workspace:*",
     "next": "^12.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styles": "workspace:*",
-    "testing": "workspace:*",
-    "tsconfig": "workspace:*",
     "ui": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "18.0.21",
+    "date-util": "workspace:*",
     "eslint-config-portfolio": "workspace:*",
-    "sass": "^1.55.0"
+    "gray-matter": "^4.0.3",
+    "markdown": "workspace:*",
+    "sass": "^1.55.0",
+    "testing": "workspace:*",
+    "tsconfig": "workspace:*"
   },
   "name": "blog-app",
   "scripts": {

@@ -7,7 +7,10 @@ const nextConfig = {
   eslint: {
     dirs: ['src', '_posts'],
   },
-  experimental: { esmExternals: true },
+  experimental: {
+    esmExternals: true,
+    externalDir: true,
+  },
   swcMinify: true,
 };
 

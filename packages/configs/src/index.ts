@@ -1,1 +1,1 @@
-export { default as siteConfig} from './siteConfig'
+export { default as siteConfig } from './siteConfig';
