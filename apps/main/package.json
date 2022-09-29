@@ -8,7 +8,6 @@
   "devDependencies": {
     "@types/react": "18.0.21",
     "eslint-config-portfolio": "workspace:*",
-    "next-transpile-modules": "^9.0.0",
     "sass": "^1.55.0",
     "tsconfig": "workspace:*"
   },
