@@ -1,9 +1,7 @@
 {
   "compilerOptions": {
     "composite": true,
-    "incremental": true,
-    "outDir": "./dist",
-    "noEmit": false
+    "incremental": true
   },
   "extends": "tsconfig/react-library.json",
   "include": ["src"]

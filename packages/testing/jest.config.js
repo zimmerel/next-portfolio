@@ -1,7 +1,8 @@
-import { type Config } from 'jest';
-
-const jestConfig: Config = {
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+/**
+ * @type {import('jest').Config}
+ */
+const jestConfig = {
+  setupFilesAfterEnv: ['testing/setup'],
   moduleDirectories: ['node_modules', '<rootDir>/'],
   testEnvironment: 'jest-environment-jsdom',
 };

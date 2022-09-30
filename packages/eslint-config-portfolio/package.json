@@ -13,6 +13,7 @@
   },
   "exports": "./index.js",
   "license": "MIT",
+  "main": "index.js",
   "name": "eslint-config-portfolio",
   "type": "commonjs",
   "version": "0.1.0"

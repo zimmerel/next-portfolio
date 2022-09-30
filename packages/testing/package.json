@@ -5,20 +5,21 @@
     "@testing-library/react": "^13.4.0",
     "@types/jest": "^29.0.3",
     "@types/testing-library__jest-dom": "^5.14.5",
+    "eslint-config-portfolio": "workspace:*",
     "jest": "^29.0.3",
     "jest-environment-jsdom": "^29.0.3",
     "tsconfig": "workspace:*",
     "typescript": "^4.8.3"
   },
   "exports": {
-    ".": "./src/index.ts",
-    "./setup": "./src/setup.ts"
+    ".": "./index.js",
+    "./globals": "./globals.js",
+    "./react-utils": "./utils.js",
+    "./setup": "./setup.js"
   },
-  "main": "src/index.ts",
   "license": "MIT",
+  "main": "index.js",
   "name": "testing",
-  "scripts": {
-    "build": "tsc -b"
-  },
+  "type": "module",
   "version": "0.1.0"
 }

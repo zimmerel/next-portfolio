@@ -1,5 +1,11 @@
 {
   "typescript.tsdk": "node_modules\\typescript\\lib",
-  "eslint.workingDirectories": ["apps/blog/", "apps/main/", "packages/"],
+  "eslint.workingDirectories": [
+    "./",
+    "apps/blog/",
+    "apps/main/",
+    "packages/testing",
+    "packages/eslint-config-portfolio"
+  ],
   "cSpell.words": ["Rehype"]
 }
