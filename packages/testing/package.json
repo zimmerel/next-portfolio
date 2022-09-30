@@ -14,7 +14,7 @@
   "exports": {
     ".": "./index.js",
     "./globals": "./globals.js",
-    "./react-utils": "./utils.js",
+    "./react-utils": "./react-utils.js",
     "./setup": "./setup.js"
   },
   "license": "MIT",
