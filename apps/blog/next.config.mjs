@@ -7,7 +7,7 @@ const nextConfig = {
     esmExternals: true,
     externalDir: true,
   },
-  swcMinify: true,
+  transpilePackages: ['testing', 'markdown', 'date-util', 'ui', 'styles'],
 };
 
 export default nextConfig;
