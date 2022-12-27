@@ -1,5 +1,5 @@
 import path from 'path';
-import { jest } from 'testing';
+import { describe, jest } from 'testing';
 import PostService from './PostService';
 
 describe('PostsApi', () => {

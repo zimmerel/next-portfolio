@@ -1,5 +1,4 @@
 {
   "extends": "tsconfig/nextjs.json",
-  "include": ["next-env.d.ts", "src", "jest.config.mjs", "next.config.mjs"],
-  "references": [{ "path": "../../packages/ui" }]
+  "include": ["next-env.d.ts", "src", "jest.config.mjs", "next.config.mjs"]
 }

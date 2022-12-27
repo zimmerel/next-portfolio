@@ -1,9 +1,4 @@
 {
   "extends": "tsconfig/nextjs.json",
-  "include": ["next-env.d.ts", "src", "next.config.mjs"],
-  "references": [
-    { "path": "../../packages/ui" },
-    { "path": "../../packages/date-util" },
-    { "path": "../../packages/markdown" }
-  ]
+  "include": ["next-env.d.ts", "src", "next.config.mjs"]
 }

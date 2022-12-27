@@ -12,15 +12,16 @@
     "typescript": "^4.9"
   },
   "exports": {
-    ".": "./index.js",
-    "./globals": "./globals.js",
-    "./react-utils": "./react-utils.js",
+    ".": "./index.ts",
+    "./globals": "./globals.ts",
+    "./react-utils": "./react-utils.ts",
     "./setup": "./setup.js"
   },
   "license": "MIT",
-  "main": "index.js",
+  "main": "./index.ts",
   "name": "testing",
   "private": true,
   "type": "module",
+  "types": "./index.ts",
   "version": "0.1.0"
 }

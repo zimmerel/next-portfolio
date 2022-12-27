@@ -6,7 +6,7 @@
     "ui": "workspace:*"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
+    "@types/react": "^18.0",
     "eslint-config-portfolio": "workspace:*",
     "sass": "^1.55.0",
     "tsconfig": "workspace:*"
