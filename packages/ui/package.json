@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "configs": "workspace:*"
+    "profile": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "18.0.21",
