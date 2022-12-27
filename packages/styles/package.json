@@ -7,8 +7,7 @@
   "license": "MIT",
   "main": "src/index.ts",
   "name": "styles",
-  "scripts": {
-    "build": "tsc -b"
-  },
+  "private": true,
+  "types": "./src/index.ts",
   "version": "0.1.0"
 }

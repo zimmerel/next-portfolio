@@ -9,15 +9,14 @@
   },
   "devDependencies": {
     "tsconfig": "workspace:*",
-    "typescript": "^4.8.3"
+    "typescript": "^4.9"
   },
   "exports": "./src/index.ts",
   "license": "MIT",
   "main": "./src/index.ts",
   "name": "markdown",
-  "scripts": {
-    "build": "tsc -b"
-  },
+  "private": true,
   "type": "module",
+  "types": "./src/index.ts",
   "version": "0.1.0"
 }

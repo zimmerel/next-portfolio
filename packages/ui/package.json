@@ -14,8 +14,7 @@
   "peerDependencies": {
     "react": "^18.2.0"
   },
-  "scripts": {
-    "build": "tsc -b"
-  },
+  "private": true,
+  "types": "./src/index.ts",
   "version": "0.1.0"
 }

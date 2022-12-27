@@ -8,6 +8,7 @@
   "license": "MIT",
   "main": "./src/index.ts",
   "name": "profile",
+  "private": true,
   "scripts": {
     "generate-resume-type": "json2ts resume-schema.json src/resume-type.ts --strictIndexSignatures"
   },

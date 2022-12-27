@@ -16,6 +16,7 @@
   "license": "MIT",
   "main": "index.js",
   "name": "eslint-config-portfolio",
+  "private": true,
   "type": "commonjs",
   "version": "0.1.0"
 }
