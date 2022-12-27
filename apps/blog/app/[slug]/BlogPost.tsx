@@ -1,4 +1,4 @@
-import type { PostData } from './types';
+import type { PostData } from '../../src/types';
 
 export default function BlogPost({ content, title, date }: PostData) {
   return (

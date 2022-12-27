@@ -23,6 +23,7 @@ importers:
       '@types/react': ^18.0
       date-util: workspace:*
       eslint-config-portfolio: workspace:*
+      fonts: workspace:*
       gray-matter: ^4.0.3
       markdown: workspace:*
       next: ^13.1
@@ -34,6 +35,7 @@ importers:
       tsconfig: workspace:*
       ui: workspace:*
     dependencies:
+      fonts: link:../../packages/fonts
       next: 13.1.1_2mygebwfgdyopr3fy2qddu2eli
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -53,6 +55,7 @@ importers:
     specifiers:
       '@types/react': ^18.0
       eslint-config-portfolio: workspace:*
+      fonts: workspace:*
       next: ^13.1
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -61,6 +64,7 @@ importers:
       tsconfig: workspace:*
       ui: workspace:*
     dependencies:
+      fonts: link:../../packages/fonts
       next: 13.1.1_2mygebwfgdyopr3fy2qddu2eli
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -110,6 +114,17 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       typescript: 4.9.4
 
+  packages/fonts:
+    specifiers:
+      '@next/font': ^13.1.1
+      tsconfig: workspace:*
+      typescript: ^4.9
+    dependencies:
+      '@next/font': 13.1.1
+    devDependencies:
+      tsconfig: link:../tsconfig
+      typescript: 4.9.4
+
   packages/markdown:
     specifiers:
       rehype-highlight: ^5.0.2
@@ -144,10 +159,10 @@ importers:
   packages/styles:
     specifiers:
       tsconfig: workspace:*
-      typescript: ^4.8.3
+      typescript: ^4.9
     devDependencies:
       tsconfig: link:../tsconfig
-      typescript: 4.8.3
+      typescript: 4.9.4
 
   packages/testing:
     specifiers:
@@ -871,6 +886,10 @@ packages:
     resolution: {integrity: sha512-sw+lTf6r6P0j+g/n9y4qdWWI2syPqZx+uc0+B/fRENqfR3KpSid6MIKqc9gNwGhJASazEQ5b3w8h4cAET213jw==}
     dependencies:
       glob: 7.1.7
+    dev: false
+
+  /@next/font/13.1.1:
+    resolution: {integrity: sha512-amygRorS05hYK1/XQRZo5qBl7l2fpHnezeKU/cNveWU5QJg+sg8gMGkUXHtvesNKpiKIJshBRH1TzvO+2sKpvQ==}
     dev: false
 
   /@next/swc-android-arm-eabi/13.1.1:
@@ -5236,12 +5255,6 @@ packages:
 
   /type/2.7.2:
     resolution: {integrity: sha512-dzlvlNlt6AXU7EBSfpAscydQ7gXB+pPGsPnfJnZpiNJBDj7IaJzQlBZYGdEi4R9HmPdBv2XmWJ6YUtoTa7lmCw==}
-    dev: true
-
-  /typescript/4.8.3:
-    resolution: {integrity: sha512-goMHfm00nWPa8UvR/CPSvykqf6dVV8x/dp0c5mFTMTIu0u0FlGWRioyy7Nn0PGAdHxpJZnuO/ut+PpQ8UiHAig==}
-    engines: {node: '>=4.2.0'}
-    hasBin: true
     dev: true
 
   /typescript/4.9.4:

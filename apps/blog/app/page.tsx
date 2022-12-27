@@ -1,9 +1,8 @@
 import { reformatIsoDate } from 'date-util';
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import Head from 'next/head';
-import PostPreview from '../PostPreview';
-import { postService } from '../services';
-import type { PostData } from '../types';
+import { postService } from '../src/services';
+import type { PostData } from '../src/types';
+import PostPreview from './PostPreview';
 
 const fields = ['title', 'slug', 'date', 'excerpt'] as const;
 type Fields = typeof fields[number];
@@ -30,15 +29,10 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export default function Index({ posts }: Props) {
   return (
-    <div>
-      <Head>
-        <title>Blog - Index</title>
-      </Head>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-        {posts.map((post) => (
-          <PostPreview key={post.slug} {...post} />
-        ))}
-      </div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      {posts.map((post) => (
+        <PostPreview key={post.slug} {...post} />
+      ))}
     </div>
   );
 }

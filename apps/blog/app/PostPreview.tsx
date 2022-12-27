@@ -1,5 +1,5 @@
-import { PostData } from './types';
 import NextLink from 'next/link';
+import type { PostData } from '../src/types';
 
 type PostPreviewProps = Pick<PostData, 'date' | 'title' | 'excerpt' | 'slug'>;
 
