@@ -4,12 +4,12 @@
     "tsconfig": "workspace:*",
     "typescript": "^4.9"
   },
-  "exports": "./index.ts",
+  "exports": "./src/index.ts",
   "license": "MIT",
-  "main": "./index.ts",
+  "main": "./src/index.ts",
   "name": "profile",
   "scripts": {
-    "generate-resume-type": "json2ts resume-schema.json resume-type.ts --strictIndexSignatures"
+    "generate-resume-type": "json2ts resume-schema.json src/resume-type.ts --strictIndexSignatures"
   },
   "types": "./index.ts",
   "version": "0.1.0"
