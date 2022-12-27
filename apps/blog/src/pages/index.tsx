@@ -1,8 +1,8 @@
 import { reformatIsoDate } from 'date-util';
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
-import getPostService from '../getPostService';
 import PostPreview from '../PostPreview';
+import { postService } from '../services';
 import type { PostData } from '../types';
 
 const fields = ['title', 'slug', 'date', 'excerpt'] as const;
@@ -11,7 +11,7 @@ type Fields = typeof fields[number];
 export const getStaticProps: GetStaticProps<{
   posts: Pick<PostData, Fields>[];
 }> = async function () {
-  const posts = getPostService()
+  const posts = postService
     .getAll([...fields])
     .sort((postA, postZ) => (postA.date > postZ.date ? -1 : 1))
     .map((post) => ({

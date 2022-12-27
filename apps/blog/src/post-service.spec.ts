@@ -1,6 +1,5 @@
-import path from 'path';
 import { describe, jest } from 'testing';
-import PostService from './PostService';
+import { createPostService } from './post-service';
 
 describe('PostsApi', () => {
   const fakePostsDirectory = 'dir/posts/';
@@ -17,7 +16,7 @@ describe('PostsApi', () => {
     },
     content: '',
   } as const;
-  let postsApi: PostService;
+  let postsApi: ReturnType<typeof createPostService>;
 
   const mockFs = {
     readdirSync: jest.fn((_input) => Object.keys(fakePostFiles) as any),
@@ -29,11 +28,9 @@ describe('PostsApi', () => {
     mockFs.readdirSync.mockClear();
     mockFs.readFileSync.mockClear();
     mockMatter.mockClear();
-    postsApi = new PostService({
+    postsApi = createPostService({
       directory: fakePostsDirectory,
       fs: mockFs,
-      parse: mockMatter,
-      path,
     });
   });
 

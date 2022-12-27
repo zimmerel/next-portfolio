@@ -9,7 +9,7 @@ import ErrorPage from 'next/error';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import BlogPost from '../BlogPost';
-import getPostService from '../getPostService';
+import { postService } from '../services';
 import { PostData } from '../types';
 
 type WithSlug = { slug: string };
@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps<PostData, WithSlug> =
       return { notFound: true };
     }
 
-    const post = getPostService().getBySlug(params.slug, [
+    const post = postService.getBySlug(params.slug, [
       'title',
       'date',
       'slug',
@@ -39,7 +39,7 @@ export const getStaticProps: GetStaticProps<PostData, WithSlug> =
   };
 
 export const getStaticPaths: GetStaticPaths<WithSlug> = async function () {
-  const posts = getPostService()
+  const posts = postService
     .getAll(['date', 'slug'])
     .sort((postA, postZ) => (postA.date > postZ.date ? -1 : 1));
 
