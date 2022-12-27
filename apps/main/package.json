@@ -9,6 +9,7 @@
     "@types/react": "^18.0",
     "eslint-config-portfolio": "workspace:*",
     "sass": "^1.55.0",
+    "testing": "workspace:*",
     "tsconfig": "workspace:*"
   },
   "name": "main-app",
