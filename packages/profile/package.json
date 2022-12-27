@@ -12,6 +12,6 @@
   "scripts": {
     "generate-resume-type": "json2ts resume-schema.json src/resume-type.ts --strictIndexSignatures"
   },
-  "types": "./index.ts",
+  "types": "./src/index.ts",
   "version": "0.1.0"
 }

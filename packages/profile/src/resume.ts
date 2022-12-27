@@ -1,6 +1,6 @@
 import type { Resume } from './resume-type';
 
-export const resume: Resume = {
+export const resume = {
   $schema:
     'https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json',
   basics: {
@@ -25,4 +25,4 @@ export const resume: Resume = {
       name: 'react',
     },
   ],
-};
+} satisfies Resume;
