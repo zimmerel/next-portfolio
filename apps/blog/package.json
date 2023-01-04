@@ -17,6 +17,9 @@
     "testing": "workspace:*",
     "tsconfig": "workspace:*"
   },
+  "exports": [
+    "./package.json"
+  ],
   "name": "blog-app",
   "scripts": {
     "build": "next build",

@@ -1,5 +1,5 @@
 import { resume } from 'profile';
-import { ComponentPropsWithoutRef } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
 const GITHUB_PROFILE = resume.basics.profiles.find((p) =>
   /github/i.test(p.network)
