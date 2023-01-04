@@ -6,13 +6,15 @@ importers:
     specifiers:
       eslint: 8.30.0
       eslint-config-portfolio: workspace:*
+      next: ^13.1
       pnpm: ^7.20.0
       prettier: ^2.8.1
       turbo: ^1.6.3
       typescript: ^4.9.4
     devDependencies:
       eslint: 8.30.0
-      eslint-config-portfolio: link:packages/eslint-config-portfolio
+      eslint-config-portfolio: link:tools/eslint-config-portfolio
+      next: 13.1.1_biqbaboplfbrettd7655fr4n2y
       pnpm: 7.20.0
       prettier: 2.8.1
       turbo: 1.6.3
@@ -44,12 +46,12 @@ importers:
     devDependencies:
       '@types/react': 18.0.21
       date-util: link:../../packages/date-util
-      eslint-config-portfolio: link:../../packages/eslint-config-portfolio
+      eslint-config-portfolio: link:../../tools/eslint-config-portfolio
       gray-matter: 4.0.3
       markdown: link:../../packages/markdown
       sass: 1.55.0
       testing: link:../../packages/testing
-      tsconfig: link:../../packages/tsconfig
+      tsconfig: link:../../tools/tsconfig
 
   apps/main:
     specifiers:
@@ -71,10 +73,10 @@ importers:
       ui: link:../../packages/ui
     devDependencies:
       '@types/react': 18.0.21
-      eslint-config-portfolio: link:../../packages/eslint-config-portfolio
+      eslint-config-portfolio: link:../../tools/eslint-config-portfolio
       sass: 1.55.0
       testing: link:../../packages/testing
-      tsconfig: link:../../packages/tsconfig
+      tsconfig: link:../../tools/tsconfig
 
   packages/date-util:
     specifiers:
@@ -84,10 +86,99 @@ importers:
     dependencies:
       date-fns: 2.29.3
     devDependencies:
-      tsconfig: link:../tsconfig
+      tsconfig: link:../../tools/tsconfig
       typescript: 4.9.4
 
-  packages/eslint-config-portfolio:
+  packages/fonts:
+    specifiers:
+      '@next/font': ^13.1.1
+      tsconfig: workspace:*
+      typescript: ^4.9
+    dependencies:
+      '@next/font': 13.1.1
+    devDependencies:
+      tsconfig: link:../../tools/tsconfig
+      typescript: 4.9.4
+
+  packages/markdown:
+    specifiers:
+      rehype-highlight: ^5.0.2
+      rehype-stringify: ^9.0.3
+      remark-gfm: ^3.0.1
+      remark-parse: ^10.0.1
+      remark-rehype: ^10.1.0
+      tsconfig: workspace:*
+      typescript: ^4.9
+      unified: ^10.1.2
+    dependencies:
+      rehype-highlight: 5.0.2
+      rehype-stringify: 9.0.3
+      remark-gfm: 3.0.1
+      remark-parse: 10.0.1
+      remark-rehype: 10.1.0
+      unified: 10.1.2
+    devDependencies:
+      tsconfig: link:../../tools/tsconfig
+      typescript: 4.9.4
+
+  packages/profile:
+    specifiers:
+      json-schema-to-typescript: ^11.0.2
+      tsconfig: workspace:*
+      typescript: ^4.9
+    devDependencies:
+      json-schema-to-typescript: 11.0.2
+      tsconfig: link:../../tools/tsconfig
+      typescript: 4.9.4
+
+  packages/styles:
+    specifiers:
+      tsconfig: workspace:*
+      typescript: ^4.9
+    devDependencies:
+      tsconfig: link:../../tools/tsconfig
+      typescript: 4.9.4
+
+  packages/testing:
+    specifiers:
+      '@jest/globals': ^29.0.3
+      '@testing-library/jest-dom': ^5.16.5
+      '@testing-library/react': ^13.4.0
+      '@types/jest': ^29.0.3
+      '@types/testing-library__jest-dom': ^5.14.5
+      eslint-config-portfolio: workspace:*
+      jest: ^29.0.3
+      jest-environment-jsdom: ^29.0.3
+      tsconfig: workspace:*
+      typescript: ^4.9
+    devDependencies:
+      '@jest/globals': 29.0.3
+      '@testing-library/jest-dom': 5.16.5
+      '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
+      '@types/jest': 29.0.3
+      '@types/testing-library__jest-dom': 5.14.5
+      eslint-config-portfolio: link:../../tools/eslint-config-portfolio
+      jest: 29.0.3
+      jest-environment-jsdom: 29.0.3
+      tsconfig: link:../../tools/tsconfig
+      typescript: 4.9.4
+
+  packages/ui:
+    specifiers:
+      '@types/react': 18.0.21
+      profile: workspace:*
+      react: ^18.2.0
+      tsconfig: workspace:*
+      typescript: ^4.9
+    dependencies:
+      profile: link:../profile
+      react: 18.2.0
+    devDependencies:
+      '@types/react': 18.0.21
+      tsconfig: link:../../tools/tsconfig
+      typescript: 4.9.4
+
+  tools/eslint-config-portfolio:
     specifiers:
       '@eslint/eslintrc': ^1.4.0
       eslint: ^8.30
@@ -114,97 +205,8 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       typescript: 4.9.4
 
-  packages/fonts:
-    specifiers:
-      '@next/font': ^13.1.1
-      tsconfig: workspace:*
-      typescript: ^4.9
-    dependencies:
-      '@next/font': 13.1.1
-    devDependencies:
-      tsconfig: link:../tsconfig
-      typescript: 4.9.4
-
-  packages/markdown:
-    specifiers:
-      rehype-highlight: ^5.0.2
-      rehype-stringify: ^9.0.3
-      remark-gfm: ^3.0.1
-      remark-parse: ^10.0.1
-      remark-rehype: ^10.1.0
-      tsconfig: workspace:*
-      typescript: ^4.9
-      unified: ^10.1.2
-    dependencies:
-      rehype-highlight: 5.0.2
-      rehype-stringify: 9.0.3
-      remark-gfm: 3.0.1
-      remark-parse: 10.0.1
-      remark-rehype: 10.1.0
-      unified: 10.1.2
-    devDependencies:
-      tsconfig: link:../tsconfig
-      typescript: 4.9.4
-
-  packages/profile:
-    specifiers:
-      json-schema-to-typescript: ^11.0.2
-      tsconfig: workspace:*
-      typescript: ^4.9
-    devDependencies:
-      json-schema-to-typescript: 11.0.2
-      tsconfig: link:../tsconfig
-      typescript: 4.9.4
-
-  packages/styles:
-    specifiers:
-      tsconfig: workspace:*
-      typescript: ^4.9
-    devDependencies:
-      tsconfig: link:../tsconfig
-      typescript: 4.9.4
-
-  packages/testing:
-    specifiers:
-      '@jest/globals': ^29.0.3
-      '@testing-library/jest-dom': ^5.16.5
-      '@testing-library/react': ^13.4.0
-      '@types/jest': ^29.0.3
-      '@types/testing-library__jest-dom': ^5.14.5
-      eslint-config-portfolio: workspace:*
-      jest: ^29.0.3
-      jest-environment-jsdom: ^29.0.3
-      tsconfig: workspace:*
-      typescript: ^4.9
-    devDependencies:
-      '@jest/globals': 29.0.3
-      '@testing-library/jest-dom': 5.16.5
-      '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
-      '@types/jest': 29.0.3
-      '@types/testing-library__jest-dom': 5.14.5
-      eslint-config-portfolio: link:../eslint-config-portfolio
-      jest: 29.0.3
-      jest-environment-jsdom: 29.0.3
-      tsconfig: link:../tsconfig
-      typescript: 4.9.4
-
-  packages/tsconfig:
+  tools/tsconfig:
     specifiers: {}
-
-  packages/ui:
-    specifiers:
-      '@types/react': 18.0.21
-      profile: workspace:*
-      react: ^18.2.0
-      tsconfig: workspace:*
-      typescript: ^4.9
-    dependencies:
-      profile: link:../profile
-      react: 18.2.0
-    devDependencies:
-      '@types/react': 18.0.21
-      tsconfig: link:../tsconfig
-      typescript: 4.9.4
 
 packages:
 
